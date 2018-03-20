@@ -397,6 +397,7 @@ function makePlaylist() {
   } else if (!localStorage.getItem('currentTracks')) {
     console.log('No tracks :/');
   }
+  updatePlaylist();
   clearLocals();
 }
 
@@ -486,16 +487,8 @@ function newPlaylist() {
   }
 }
 
-function submitEmail() {
-  let email = document.getElementById("email").value;
-  let FNAME = document.getElementById("FNAME").value;
-  let LNAME = document.getElementById("LNAME").value;
-  $.post(
-    "/email?email=" + email + "&FNAME=" + FNAME + "&LNAME=" + LNAME,
-    function() {
-      console.log("success");
-    }
-  );
+function refresh() {
+
   location.reload();
 }
 
