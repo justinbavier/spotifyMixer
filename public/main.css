@@ -374,6 +374,7 @@ html .ui-button.ui-state-disabled:active {
 /* ================== */
 .tracks-display {
   overflow-y: scroll;
+  overflow-x: hidden;
   border: 2px #ffffff solid;
   border-radius: 0.5rem;
   color: white;
@@ -383,21 +384,20 @@ html .ui-button.ui-state-disabled:active {
   height: 25rem;
 }
 
-/* .track-element {
-  padding-right: 2.5rem;
-  padding-bottom: 15rem;
-} */
+.track-element {
+  height: 9rem;
+  padding-bottom: 2rem;
+}
 
 /* .track-element > div {
   display: inherit;
 } */
-/*
+
 .album-art {
-  width: 150;
-  height: 150;
-  margin: 0 auto;
-  padding-top:1rem;
-} */
+  width: 100;
+  padding-top: .75rem;
+  margin-bottom: 0rem;
+}
 
 .track-link:clicked {
   color: #1db954;

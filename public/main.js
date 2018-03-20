@@ -402,32 +402,25 @@ function makePlaylist() {
 
 function renderTracks(ids) {
   $.get("/tracks?ids=" + ids.join() + "&token=" + _token, function(tracks) {
-    let n = 1;
     tracks.forEach(function(track) {
-      let sec = '00';
-      let min = '00';
-
       let image = track.album.images
         ? track.album.images[0].url
         : "https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png";
       let trackElement =
-        '<div class="row"><div class="col-xs-1"></div><div class="track-element col-xs-10" id="' +
+        '<div class="row"><div class="col-xs-1"></div><div class="track-element col-xs-12" id="' +
         track.uri +
-        '"><div class="row"><p class="track-number col-xs-1">' +
-        n +
-        '.</p><a class="track-link col-xs-8" href="https://open.spotify.com/track/' +
+        '"><div class="row"><div class="col-xs-1"></div><img class="album-art col-xs-3" src="' +
+        image +
+        '"/><div class="col-xs-7"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
         track.id +
         '" target="_blank"><p class="track-name">' +
         track.name +
-        '</p></a><p class="track-length col-xs-2">' +
-        track.duration_ms +
-        '</p></div><div class="row"><div class="col-xs-1"></div><p class="artist-name col-xs-10">' +
+        '</p></a></div><div class="row"><p class="artist-name">' +
         track.artists[0].name +
         ' - ' +
         track.album.name +
-        '</p></div></div><div class="col-xs-1"></div></div>';
+        '</p></div></div></div><div class="col-xs-1"></div></div>';
       $("#tracks").append(trackElement);
-      n++;
     });
   });
 }
