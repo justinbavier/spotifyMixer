@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "49d489069bce4a5388c657a3351b176c";
-// const redirectUri = "http://localhost:5000";
-const redirectUri = "https://spotify-mixer.herokuapp.com";
+const redirectUri = "http://localhost:5000";
+// const redirectUri = "https://spotify-mixer.herokuapp.com";
 const scopes = [
   "streaming",
   "user-read-birthdate",
@@ -381,24 +381,24 @@ function getRecommendations() {
   }
 }
 
-// function makePlaylist() {
-//   if (localStorage.getItem('currentTracks')) {
-//     $.post(
-//       '/playlist?tracks=' +
-//         localStorage.getItem('currentTracks') +
-//         '&genres=' +
-//         localStorage.getItem('currentGenres') +
-//         '&features=' +
-//         localStorage.getItem('currentFeatures') +
-//         '&token=' +
-//         _token
-//     );
-//     alert('Success! Check Spotify for you playlist!');
-//   } else if (!localStorage.getItem('currentTracks')) {
-//     console.log('No tracks :/');
-//   }
-//   clearLocals();
-// }
+function makePlaylist() {
+  if (localStorage.getItem('currentTracks')) {
+    $.post(
+      '/playlist?tracks=' +
+        localStorage.getItem('currentTracks') +
+        '&genres=' +
+        localStorage.getItem('currentGenres') +
+        '&features=' +
+        localStorage.getItem('currentFeatures') +
+        '&token=' +
+        _token
+    );
+    alert('Success! Check Spotify for you playlist!');
+  } else if (!localStorage.getItem('currentTracks')) {
+    console.log('No tracks :/');
+  }
+  clearLocals();
+}
 
 function renderTracks(ids) {
   $.get("/tracks?ids=" + ids.join() + "&token=" + _token, function(tracks) {
