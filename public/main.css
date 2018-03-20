@@ -375,6 +375,7 @@ html .ui-button.ui-state-disabled:active {
 .tracks-display {
   overflow-y: scroll;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   border: 2px #ffffff solid;
   border-radius: 0.5rem;
   color: white;
