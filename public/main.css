@@ -31,7 +31,7 @@ body {
 }
 
 .btn {
-  background: rgba(255, 255, 255);
+  background: rgba(255, 255, 255, 1);
   color: black;
   border-radius: 1.5rem;
 }
