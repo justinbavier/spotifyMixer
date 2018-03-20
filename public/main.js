@@ -1,36 +1,35 @@
 // Check hash for token
 const hash = window.location.hash
   .substring(1)
-  .split('&')
+  .split("&")
   .reduce(function(initial, item) {
     if (item) {
-      var parts = item.split('=');
+      var parts = item.split("=");
       initial[parts[0]] = decodeURIComponent(parts[1]);
     }
     return initial;
   }, {});
-window.location.hash = '';
+window.location.hash = "";
 
 // Set token
 let _token = hash.access_token;
 
-const authEndpoint = 'https://accounts.spotify.com/authorize';
-const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+const authEndpoint = "https://accounts.spotify.com/authorize";
+const clientId = "49d489069bce4a5388c657a3351b176c";
+const redirectUri = "http://localhost:5000";
 const scopes = [
-  'streaming',
-  'user-read-birthdate',
-  'user-read-email',
-  'user-read-private',
-  'playlist-modify-public',
-  'user-modify-playback-state'
+  "streaming",
+  "user-read-birthdate",
+  "user-read-email",
+  "user-read-private",
+  "playlist-modify-public",
+  "user-modify-playback-state"
 ];
 
 // If there is no token, redirect to Spotify Authorization
 if (!_token) {
   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-    '%20'
+    "%20"
   )}&response_type=token`;
 }
 
@@ -59,7 +58,7 @@ $(function() {
 //   return false;
 // });
 
-$('#clear-button').click(function() {
+$("#clear-button").click(function() {
   clearCache();
   location.reload();
   return false;
@@ -82,41 +81,42 @@ $('#clear-button').click(function() {
 // }
 
 function getGenresList() {
-  $('#genres-list').empty();
-  $.get('/genres?token=' + _token, function(genres) {
+  $("#genres-list").empty();
+  $.get("/genres?token=" + _token, function(genres) {
     i = 0;
     genres.forEach(function(genre) {
-      if (i % 5 == 0) {
-        // let startRow = '<div class="row">';
+      if (i % 2 == 0) {
+        let startRow = '<div class="row">';
         let genreButtonElement =
-          '<label class="btn genre-button btn-gray btn-sm"><input type="checkbox" value="' +
+          '<label class="btn genre-button btn-gray col-xs-6"><input type="checkbox" value="' +
           genre +
           '">' +
           genre +
-          '</label>';
-        $('#genres-list')
-          // .append(startRow)
+          "</label>";
+        $("#genres-list")
+          .append(startRow)
           .append(genreButtonElement);
         i++;
-      } else if ((i + 1) % 5 == 0) {
-        // let endRow = '</div>';
+      } else if ((i + 1) % 2 == 0) {
+        let endRow = "</div>";
         let genreButtonElement =
-          '<label class="btn genre-button btn-gray btn-sm"><input type="checkbox" value="' +
+          '<label class="btn genre-button btn-gray col-xs-6"><input type="checkbox" value="' +
           genre +
           '">' +
           genre +
-          '</label>';
-        $('#genres-list').append(genreButtonElement);
-        // .append(endRow);
+          "</label>";
+        $("#genres-list")
+          .append(genreButtonElement)
+          .append(endRow);
         i++;
       } else {
         let genreButtonElement =
-          '<label class="btn genre-button btn-gray btn-sm"><input type="checkbox" value="' +
+          '<label class="btn genre-button btn-gray col-xs-6"><input type="checkbox" value="' +
           genre +
           '">' +
           genre +
-          '</label>';
-        $('#genres-list').append(genreButtonElement);
+          "</label>";
+        $("#genres-list").append(genreButtonElement);
         i++;
       }
     });
@@ -124,12 +124,12 @@ function getGenresList() {
 }
 
 function setUpMode() {
-  $('#mode-value').text('Minor');
+  $("#mode-value").text("Minor");
 }
 
 function setUpSliders() {
-  $('#positivity-slider').slider({
-    orientation: 'vertical',
+  $("#positivity-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -138,14 +138,14 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#positivity-value').text($('#positivity-slider').slider('values', 0));
+      $("#positivity-value").text($("#positivity-slider").slider("values", 0));
     },
     slide: function() {
-      $('#positivity-value').text($('#positivity-slider').slider('values', 0));
+      $("#positivity-value").text($("#positivity-slider").slider("values", 0));
     }
   });
-  $('#energy-slider').slider({
-    orientation: 'vertical',
+  $("#energy-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -154,14 +154,14 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#energy-value').text($('#energy-slider').slider('values', 0));
+      $("#energy-value").text($("#energy-slider").slider("values", 0));
     },
     slide: function() {
-      $('#energy-value').text($('#energy-slider').slider('values', 0));
+      $("#energy-value").text($("#energy-slider").slider("values", 0));
     }
   });
-  $('#acousticness-slider').slider({
-    orientation: 'vertical',
+  $("#acousticness-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -170,18 +170,18 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#acousticness-value').text(
-        $('#acousticness-slider').slider('values', 0)
+      $("#acousticness-value").text(
+        $("#acousticness-slider").slider("values", 0)
       );
     },
     slide: function() {
-      $('#acousticness-value').text(
-        $('#acousticness-slider').slider('values', 0)
+      $("#acousticness-value").text(
+        $("#acousticness-slider").slider("values", 0)
       );
     }
   });
-  $('#danceability-slider').slider({
-    orientation: 'vertical',
+  $("#danceability-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -190,18 +190,18 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#danceability-value').text(
-        $('#danceability-slider').slider('values', 0)
+      $("#danceability-value").text(
+        $("#danceability-slider").slider("values", 0)
       );
     },
     slide: function() {
-      $('#danceability-value').text(
-        $('#danceability-slider').slider('values', 0)
+      $("#danceability-value").text(
+        $("#danceability-slider").slider("values", 0)
       );
     }
   });
-  $('#instrumentalness-slider').slider({
-    orientation: 'vertical',
+  $("#instrumentalness-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -210,18 +210,18 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#instrumentalness-value').text(
-        $('#instrumentalness-slider').slider('values', 0)
+      $("#instrumentalness-value").text(
+        $("#instrumentalness-slider").slider("values", 0)
       );
     },
     slide: function() {
-      $('#instrumentalness-value').text(
-        $('#instrumentalness-slider').slider('values', 0)
+      $("#instrumentalness-value").text(
+        $("#instrumentalness-slider").slider("values", 0)
       );
     }
   });
-  $('#liveness-slider').slider({
-    orientation: 'vertical',
+  $("#liveness-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -230,14 +230,14 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#liveness-value').text($('#liveness-slider').slider('values', 0));
+      $("#liveness-value").text($("#liveness-slider").slider("values", 0));
     },
     slide: function() {
-      $('#liveness-value').text($('#liveness-slider').slider('values', 0));
+      $("#liveness-value").text($("#liveness-slider").slider("values", 0));
     }
   });
-  $('#speechiness-slider').slider({
-    orientation: 'vertical',
+  $("#speechiness-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 1,
     step: 0.01,
@@ -246,19 +246,19 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#speechiness-value').text(
-        $('#speechiness-slider').slider('values', 0)
+      $("#speechiness-value").text(
+        $("#speechiness-slider").slider("values", 0)
       );
     },
     slide: function() {
-      $('#speechiness-value').text(
-        $('#speechiness-slider').slider('values', 0)
+      $("#speechiness-value").text(
+        $("#speechiness-slider").slider("values", 0)
       );
     }
   });
 
-  $('#tempo-slider').slider({
-    orientation: 'vertical',
+  $("#tempo-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 200,
     step: 1,
@@ -267,15 +267,15 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#tempo-value').text($('#tempo-slider').slider('values', 0));
+      $("#tempo-value").text($("#tempo-slider").slider("values", 0));
     },
     slide: function() {
-      $('#tempo-value').text($('#tempo-slider').slider('values', 0));
+      $("#tempo-value").text($("#tempo-slider").slider("values", 0));
     }
   });
 
-  $('#popularity-slider').slider({
-    orientation: 'vertical',
+  $("#popularity-slider").slider({
+    orientation: "vertical",
     min: 0,
     max: 100,
     step: 1,
@@ -284,10 +284,10 @@ function setUpSliders() {
       getRecommendations();
     },
     create: function() {
-      $('#popularity-value').text($('#popularity-slider').slider('values', 0));
+      $("#popularity-value").text($("#popularity-slider").slider("values", 0));
     },
     slide: function() {
-      $('#popularity-value').text($('#popularity-slider').slider('values', 0));
+      $("#popularity-value").text($("#popularity-slider").slider("values", 0));
     }
   });
 }
@@ -295,36 +295,36 @@ function setUpSliders() {
 function getSliderValues() {
   let values = {};
 
-  let target_popularity = $('#popularity-slider').slider('values', 0);
-  let target_positivity = $('#positivity-slider').slider('values', 0);
-  let target_energy = $('#energy-slider').slider('values', 0);
-  let target_acousticness = $('#acousticness-slider').slider('values', 0);
-  let target_danceability = $('#danceability-slider').slider('values', 0);
-  let target_instrumentalness = $('#instrumentalness-slider').slider(
-    'values',
+  let target_popularity = $("#popularity-slider").slider("values", 0);
+  let target_positivity = $("#positivity-slider").slider("values", 0);
+  let target_energy = $("#energy-slider").slider("values", 0);
+  let target_acousticness = $("#acousticness-slider").slider("values", 0);
+  let target_danceability = $("#danceability-slider").slider("values", 0);
+  let target_instrumentalness = $("#instrumentalness-slider").slider(
+    "values",
     0
   );
-  let target_liveness = $('#liveness-slider').slider('values', 0);
-  let target_speechiness = $('#speechiness-slider').slider('values', 0);
-  let target_tempo = $('#tempo-slider').slider('values', 0);
+  let target_liveness = $("#liveness-slider").slider("values", 0);
+  let target_speechiness = $("#speechiness-slider").slider("values", 0);
+  let target_tempo = $("#tempo-slider").slider("values", 0);
 
-  if ($('#mode-value').is(':checked')) {
-    values['target_mode'] = 0;
-    $('#mode-text').text('Minor');
-  } else if ($('#mode-value').is(':not(:checked)')) {
-    values['target_mode'] = 1;
-    $('#mode-text').text('Major');
+  if ($("#mode-value").is(":checked")) {
+    values["target_mode"] = 0;
+    $("#mode-text").text("Minor");
+  } else if ($("#mode-value").is(":not(:checked)")) {
+    values["target_mode"] = 1;
+    $("#mode-text").text("Major");
   }
 
-  values['target_popularity'] = target_popularity;
-  values['target_positivity'] = target_positivity;
-  values['target_energy'] = target_energy;
-  values['target_acousticness'] = target_acousticness;
-  values['target_danceability'] = target_danceability;
-  values['target_instrumentalness'] = target_instrumentalness;
-  values['target_liveness'] = target_liveness;
-  values['target_speechiness'] = target_speechiness;
-  values['target_tempo'] = target_tempo;
+  values["target_popularity"] = target_popularity;
+  values["target_positivity"] = target_positivity;
+  values["target_energy"] = target_energy;
+  values["target_acousticness"] = target_acousticness;
+  values["target_danceability"] = target_danceability;
+  values["target_instrumentalness"] = target_instrumentalness;
+  values["target_liveness"] = target_liveness;
+  values["target_speechiness"] = target_speechiness;
+  values["target_tempo"] = target_tempo;
 
   console.log(values);
   return values;
@@ -333,28 +333,28 @@ function getSliderValues() {
 function getRecommendations() {
   // Get selected genres
   let genres = [];
-  $('#genres-list input:checked').each(function() {
+  $("#genres-list input:checked").each(function() {
     genres.push($(this).val());
   });
   if (genres[0]) {
     let genresString = genres.join();
-    localStorage.setItem('currentGenres', genresString);
-    $('#current-genres').text(genresString);
+    localStorage.setItem("currentGenres", genresString);
+    $("#current-genres").text(genresString);
 
     // Get slider values
     let audioFeatures = getSliderValues();
-    localStorage.setItem('currentFeatures', JSON.stringify(audioFeatures));
+    localStorage.setItem("currentFeatures", JSON.stringify(audioFeatures));
 
     // Send the request
     $.get(
-      '/recommendations?seed_genres=' +
+      "/recommendations?seed_genres=" +
         genresString +
-        '&' +
+        "&" +
         $.param(audioFeatures) +
-        '&token=' +
+        "&token=" +
         _token,
       function(data) {
-        $('#tracks').empty();
+        $("#tracks").empty();
         let trackIds = [];
         let trackUris = [];
         if (data.tracks) {
@@ -363,13 +363,13 @@ function getRecommendations() {
               trackIds.push(track.id);
               trackUris.push(track.uri);
             });
-            localStorage.setItem('currentTracks', trackUris.join());
+            localStorage.setItem("currentTracks", trackUris.join());
             renderTracks(trackIds);
           } else {
-            alert('Try more broad parameters');
+            alert("Try more broad parameters");
           }
         } else {
-          alert('Please pick at least 1 genre!');
+          alert("Please pick at least 1 genre!");
         }
       }
     );
@@ -400,48 +400,64 @@ function getRecommendations() {
 // }
 
 function renderTracks(ids) {
-  $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
+  $.get("/tracks?ids=" + ids.join() + "&token=" + _token, function(tracks) {
+    let n = 1;
     tracks.forEach(function(track) {
+      let sec = '00';
+      let min = '00';
+
       let image = track.album.images
         ? track.album.images[0].url
-        : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
+        : "https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png";
       let trackElement =
-        '<div class="track-element col-md-4" id="' +
+        '<div class="row"><div class="col-xs-1"></div><div class="track-element col-xs-10" id="' +
         track.uri +
-        '" onclick="play(\'' +
-        track.uri +
-        '\');"><div><div class="row"><img class="album-art" src="' +
-        image +
-        '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/' +
+        '"><div class="row"><p class="track-number col-xs-1">' +
+        n +
+        '.</p><a class="track-link col-xs-8" href="https://open.spotify.com/track/' +
         track.id +
-        '" target="_blank"><p class="text-center">' +
+        '" target="_blank"><p class="track-name">' +
         track.name +
-        '</p></a><p class="artist-name text-center">' +
+        '</p></a><p class="track-length col-xs-2">' +
+        track.duration_ms +
+        '</p></div><div class="row"><div class="col-xs-1"></div><p class="artist-name col-xs-10">' +
         track.artists[0].name +
-        '</p></div></div></div>';
-      $('#tracks').append(trackElement);
+        ' - ' +
+        track.album.name +
+        '</p></div></div><div class="col-xs-1"></div></div>';
+      $("#tracks").append(trackElement);
+      n++;
     });
   });
 }
 
+// onclick="play(\'' +
+// track.uri +
+// '\');"
+
+// <div class="row"><img class="album-art" src="' +
+// image +
+// '"/></div>
+
 function updatePlaylist() {
-  let latestPlaylist = '<iframe class="spotify-player col-md-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
-  $('#spotify-player').append(latestPlaylist);
+  let latestPlaylist =
+    '<iframe class="spotify-player col-md-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
+  $("#spotify-player").append(latestPlaylist);
 }
 
 function addTracks() {
-  if (localStorage.getItem('currentTracks')) {
+  if (localStorage.getItem("currentTracks")) {
     $.post(
-      '/addTracks?tracks=' +
-        localStorage.getItem('currentTracks') +
-        '&token=' +
+      "/addTracks?tracks=" +
+        localStorage.getItem("currentTracks") +
+        "&token=" +
         _token
     );
     updatePlaylist();
     clearLocals();
-  } else if (!localStorage.getItem('currentTracks')) {
+  } else if (!localStorage.getItem("currentTracks")) {
     alert(`There's no tracks to add! Pick a genre...`);
-  } else if (!localStorage.getItem('currentPlaylist')) {
+  } else if (!localStorage.getItem("currentPlaylist")) {
     alert(
       `You can't add tracks to a playlist you haven't created yet! Click the button...`
     );
@@ -450,26 +466,26 @@ function addTracks() {
 
 //User creates new playlist upon login
 function newPlaylist() {
-  let playlistName = document.getElementById('playlist-name').value;
-  let playlistDescription = document.getElementById('playlist-description')
+  let playlistName = document.getElementById("playlist-name").value;
+  let playlistDescription = document.getElementById("playlist-description")
     .value;
   if (!playlistName) {
-    alert('Please give you playlist a name!');
+    alert("Please give you playlist a name!");
   } else if (playlistName) {
     $.post(
-      '/newPlaylist?playlistName=' +
+      "/newPlaylist?playlistName=" +
         playlistName +
-        '&playlistDescription=' +
+        "&playlistDescription=" +
         playlistDescription +
-        '&token=' +
+        "&token=" +
         _token,
       function(playlist) {
-        localStorage.setItem('currentPlaylist', playlist.href);
-        localStorage.setItem('playlistName', playlist.name);
+        localStorage.setItem("currentPlaylist", playlist.href);
+        localStorage.setItem("playlistName", playlist.name);
         alert(
-          'Playlist ' +
-            localStorage.getItem('playlistName') +
-            ' successfully created!'
+          "Playlist " +
+            localStorage.getItem("playlistName") +
+            " successfully created!"
         );
       }
     );
@@ -477,32 +493,28 @@ function newPlaylist() {
 }
 
 function submitEmail() {
-  let email = document.getElementById('email').value;
-  let FNAME = document.getElementById('FNAME').value;
-  let LNAME = document.getElementById('LNAME').value;
-  $.post('/email?email=' +
-  email +
-  '&FNAME=' +
-  FNAME +
-  '&LNAME=' +
-  LNAME,
-  function() {
-    console.log('success');
-  });
+  let email = document.getElementById("email").value;
+  let FNAME = document.getElementById("FNAME").value;
+  let LNAME = document.getElementById("LNAME").value;
+  $.post(
+    "/email?email=" + email + "&FNAME=" + FNAME + "&LNAME=" + LNAME,
+    function() {
+      console.log("success");
+    }
+  );
   location.reload();
 }
 
-
 function clearCache() {
-  localStorage.setItem('currentTracks', '');
-  localStorage.setItem('currentGenres', '');
-  localStorage.setItem('currentFeatures', '');
-  localStorage.setItem('currentPlaylist', '');
+  localStorage.setItem("currentTracks", "");
+  localStorage.setItem("currentGenres", "");
+  localStorage.setItem("currentFeatures", "");
+  localStorage.setItem("currentPlaylist", "");
   _token = null;
 }
 
 function clearLocals() {
-  localStorage.setItem('currentTracks', '');
-  localStorage.setItem('currentGenres', '');
-  localStorage.setItem('currentFeatures', '');
+  localStorage.setItem("currentTracks", "");
+  localStorage.setItem("currentGenres", "");
+  localStorage.setItem("currentFeatures", "");
 }

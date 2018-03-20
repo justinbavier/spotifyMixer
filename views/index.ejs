@@ -1,339 +1,331 @@
 <% include _header %>
     <div class="container">
       <div class="row">
-        <div class="card">
-
-          <div class="space-after"></div>
-
-          <div class="space-after"></div>
+        <div class="card col-xs-12 col-md-12">
+          <div class="row">
+            <div class="space-after"></div>
+          </div>
 
           <!-- TOP SECTION -->
           <div class="row">
-            <div class="col-md-1"></div>
+            <div class="col-xs-12">
+            <!-- <div class="col-md-1"></div> -->
+            <!-- HEADER -->
 
-            <!-- TRACKS DISPLAY -->
-            <div id="tracks-display" class="tracks-display col-md-7">
-              <div id="tracks">
-                <p class="description text-center">
-                  Join Crosshair Music in using
-                  Spotify's recommendation algorithm to build a playlist out
-                  of seemingly disconnected genres, moods, tempos, etc. It's amazing
-                  to discover how seemingly unrelated things can create something
-                  beautiful!
-                </p>
-                <p class="description text-center">Select some genres to get started...</p>
+                <!-- TITLE -->
+                <div class="row">
+                  <p class="title text-center col-xs-12">
+                    Spotify Mixer
+                  </p>
+                </div>
+                <!-- END TITLE -->
+
+                <!-- DESCRIPTION-->
+                <div class="row">
+                  <p class="description text-center col-xs-12">
+                    Select some genres to get started...
+                  </p>
+                </div>
+                <!-- END DESCRIPTION -->
 
                 <!-- GENRES BUTTON -->
                 <div class="row">
-                  <div class="col-md-4"></div>
-                  <button class="btn col-md-4" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+                  <div class="col-xs-2">
+                  </div>
+                  <button class="btn col-xs-8" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">
+                    Choose genres
+                  </button>
+                  <div class="col-xs-2">
+                  </div>
                 </div>
                 <!-- END GENRES BUTTON -->
+
+              <!-- END HEADER -->
+
+              <div class="row">
+                <div class="space-after"></div>
               </div>
-            </div>
+
+              <!-- TRACKS DISPLAY -->
+              <div class="row">
+                <div id="tracks-display" class="tracks-display col-xs-12 col-md-12">
+                  <div class="row">
+                    <div id="tracks">
+                    </div>
+                  </div>
+                </div>
+              </div>
             <!-- END TRACKS DISPLAY -->
 
-            <!-- LOGO AND SUBMIT PANE -->
-            <div class="col-md-3" id="add-tracks">
-              <div class="row">
-                <div class="col-md-2"></div>
-                <div class="logo-container col-md-8">
-                  <img class="logo" src="/images/crosshair-logo.svg"/>
-                </div>
-                <div class="col-md-1"></div>
-              </div>
 
-              <div class="space-after"></div>
-
-              <div class="row">
-                <div class="col-md-1"></div>
-                <div class="tracks-button-container col-md-10">
-                  <button class="tracks-button btn col-md-12" id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" onclick="addTracks();">Add tracks!</button>
-                </div>
-              </div>
 
             </div>
-            <!-- END LOGO AND SUBMIT PANE -->
-
           </div>
           <!--  END TOP SECTION -->
+              <div class="row">
+                <div class="d-md-none d-lg-none d-xl-none top-values col-xs-12 col-md-5">
 
-            <!--  VALUES SECTION -->
+                  <!--  MODE SECTION -->
+                  <div class="box col-xs-5">
+                    <div class="mode-label-box">
+                      <div class="mode-label-content">
+                        <div class="mode-label text-center">
+                          Mode
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mode-text-box">
+                      <div class="row">
+                        <div class="col-xs-12">
+
+                          <div class="col-xs-4" onclick="getRecommendations();">
+                            <label class="switch">
+                              <input id="mode-value" type="checkbox" checked />
+                              <span class="mode-slider round"></span>
+                            </label>
+                          </div>
+
+                          <div class="mode-text text-center col-xs-4" id="mode-text">
+                            Minor
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--  END MODE SECTION -->
+
+                  <!--  TEMPO SECTION -->
+                  <div class="box col-xs-7">
+
+                    <!--  TEMPO VALUE -->
+                    <div class="tempo-value-box">
+                      <div class="tempo-content">
+                        <div class="tempo-label text-center">
+                          Tempo: <span class="tempo-value" id="tempo-value"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- END TEMPO VALUE -->
+
+                    <!-- TEMPO SLIDER -->
+                    <div class="tempo-section">
+                      <div class="tempo-slider-spacer"></div>
+                      <div class="tempo-slider" id="tempo-slider"></div>
+                    </div>
+                    <!-- END TEMPO SLIDER -->
+
+                  </div>
+                  <!--  END TEMPO SECTION -->
+
+                </div>
+              </div>
+
+
             <div class="row">
-              <div class="col-md-1"></div>
-              <div class="box col-md-1">
+              <div class="top-values col-xs-12 col-md-12">
+                <div class="box col-xs-3 col-md-1">
 
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                        <div class="prefs-value text-center" id="popularity-value"></div>
+                    <div class="value-box">
+                      <div class="value-content">
+                          <div class="prefs-value text-center" id="popularity-value"></div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Popularity</div>
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Popularity</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div id="popularity" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                      <div class="prefs-slider" id="popularity-slider"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="box col-md-1">
-
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="positivity-value"></div>
+                    <div id="popularity" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                        <div class="prefs-slider" id="popularity-slider"></div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Positivity</div>
+
+                </div>
+                <div class="box col-xs-3 col-md-1">
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="positivity-value"></div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div id="positivity" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="positivity-slider"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="box col-md-1">
-
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="energy-value"></div>
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Positivity</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Energy</div>
+                    <div id="positivity" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="positivity-slider"></div>
                     </div>
-                  </div>
+
                 </div>
+                <div class="box col-xs-3 col-md-1">
 
-                <div class="row">
-                  <div id="energy" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="energy-slider"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="box col-md-1">
-
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="acousticness-value"></div>
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="energy-value"></div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Acoustic</div>
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Energy</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div id="acousticness" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="acousticness-slider"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="box col-md-1">
-
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="danceability-value"></div>
+                    <div id="energy" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="energy-slider"></div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Danceability</div>
+                </div>
+                <div class="box col-xs-3 col-md-1">
+
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="acousticness-value"></div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div id="danceability" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="danceability-slider"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="box col-md-1">
-
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="instrumentalness-value"></div>
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Acoustic</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Instrumental</div>
+                    <div id="acousticness" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="acousticness-slider"></div>
                     </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div id="instrumentalness" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="instrumentalness-slider"></div>
-                  </div>
-                </div>
 
                 </div>
-              <div class="box col-md-1">
+                <div class="box col-xs-3 col-md-1">
 
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="liveness-value"></div>
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="danceability-value"></div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Liveness</div>
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Danceability</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div id="liveness" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="liveness-slider"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="box col-md-1">
-
-                <div class="row">
-                  <div class="value-box">
-                    <div class="value-content">
-                      <div class="prefs-value text-center" id="speechiness-value"></div>
+                    <div id="danceability" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="danceability-slider"></div>
                     </div>
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div class="label-box">
-                    <div class="label-content">
-                      <div class="prefs-label text-center">Speechiness</div>
+                </div>
+                <div class="box col-xs-3 col-md-1">
+
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="instrumentalness-value"></div>
+                      </div>
                     </div>
+
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Instrumental</div>
+                      </div>
+                    </div>
+
+                    <div id="instrumentalness" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="instrumentalness-slider"></div>
+                    </div>
+
                   </div>
+                <div class="box col-xs-3 col-md-1">
+
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="liveness-value"></div>
+                      </div>
+                    </div>
+
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Liveness</div>
+                      </div>
+                    </div>
+
+                    <div id="liveness" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="liveness-slider"></div>
+                    </div>
+
                 </div>
+                <div class="box col-xs-3 col-md-1">
 
-                <div class="row">
-                  <div id="speechiness" class="prefs-section">
-                    <div class="slider-spacer"></div>
-                    <div class="prefs-slider" id="speechiness-slider"></div>
-                  </div>
-                </div>
+                    <div class="value-box">
+                      <div class="value-content">
+                        <div class="prefs-value text-center" id="speechiness-value"></div>
+                      </div>
+                    </div>
 
-              </div>
+                    <div class="label-box">
+                      <div class="label-content">
+                        <div class="prefs-label text-center">Speechiness</div>
+                      </div>
+                    </div>
 
-              <div class="mode-label-box col-md-2">
-                  <div class="mode-label-content">
-                    <div class="mode-label text-center">Mode</div>
-                  </div>
-              </div>
+                    <div id="speechiness" class="prefs-section">
+                      <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="speechiness-slider"></div>
+                    </div>
 
-              <div class="space-after"></div>
-
-              <div class="mode-text-box col-md-2">
-                <div class="col-md-1"></div>
-
-                <div class="col-md-2" onclick="getRecommendations();">
-                  <label class="switch">
-                    <input id="mode-value" type="checkbox" checked />
-                    <span class="mode-slider round"></span>
-                  </label>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="mode-text text-center" id="mode-text">Minor</div>
                 </div>
               </div>
-
-              <!--  TEMPO SECTION -->
-
-                <!--  TEMPO VALUE -->
-                <div class="tempo-value-box col-md-2">
-                  <div class="tempo-content">
-                    <div class="tempo-label col-md-4">Tempo:</div>
-                    <div class="col-md-1"></div>
-                    <div class="tempo-value col-md-4" id="tempo-value"></div>
-                  </div>
-                </div>
-                <!-- END TEMPO VALUE -->
-
-                <!-- TEMPO SLIDER -->
-                <div class="tempo-section col-md-2">
-                  <div class="tempo-slider-spacer"></div>
-                  <div class="tempo-slider" id="tempo-slider"></div>
-                </div>
-                <!-- END TEMPO SLIDER -->
-
-              <!--  END TEMPO SECTION -->
-
             </div>
-            <!--  END VALUES SECTION -->
-          <div class="space-after"></div>
 
+            <div class="space-after"></div>
 
+            <!-- SUBMIT PANE -->
+            <div class="row">
+              <div class="col-xs-12">
 
+                <!-- ADD BUTTON -->
+                <div class="row">
+                  <div class="col-xs-2">
+                  </div>
+                    <button class="tracks-button btn col-xs-8" id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" onclick="addTracks();">
+                      Add tracks!
+                    </button>
+                  <div class="col-xs-2">
+                  </div>
+                </div>
+                <!--  END ADD BUTTON -->
+
+              </div>
+            </div>
+            <!-- END SUBMIT PANE -->
+
+          </div>
+          <!--  BOTTOM OF CARD -->
         </div>
-        <!--  BOTTOM OF CARD -->
+
       </div>
 
         <!--  MODALS -->
 
           <!-- GENRE MODAL -->
-          <div class="modal fade" id="genre-select">
+          <div class="modal genre-modal fade" id="genre-select">
             <div class="modal-dialog">
               <div class="modal-content">
 
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Select genres</h4>
+                  <h4 class="modal-title text-center">Select genres</h4>
                   <p>Make sure you hit 'Okay' button at bottom!</p>
                 </div>
 
@@ -352,6 +344,7 @@
               </div>
             </div>
           </div>
+
           <!--  END GENRE MODAL -->
 
           <!-- PLAYLIST SETUP MODAL -->
@@ -394,17 +387,17 @@
                 <form>
                   <div class="modal-body">
                     <div class="row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-sm-6">
                         <label for="FNAME"></label>
                         <input type="text" class="form-control" id="FNAME" placeholder="First Name">
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-sm-6">
                         <label for="LNAME"></label>
                         <input type="text" class="form-control" id="LNAME" placeholder="Last Name">
                       </div>
                     </div>
                     <div class="row">
-                      <div class="form-group col-md-12">
+                      <div class="form-group col-sm-12">
                         <label for="email"></label>
                         <input type="text" class="form-control" id="email" placeholder="Email">
                       </div>
@@ -413,7 +406,7 @@
                       <p class="text-center">And check out the playlist so far...</p>
                     </div>
                     <div class="row">
-                      <div class="col-md-3"></div>
+                      <div class="col-sm-3"></div>
                       <div id="spotify-player"></div>
                     </div>
                   </div>
@@ -428,9 +421,9 @@
 
         <!--  END MODALS-->
 <!--
-      <div class="col-md-4"></div>
-        <button style="margin-bottom: 3rem;" id="clear-button" type="submit" class="clear-button col-md-4 btn">Clear Locals</button>
-      <div class="col-md-4"></div> -->
+      <div class="col-4"></div>
+        <button style="margin-bottom: 3rem;" id="clear-button" type="submit" class="clear-button col-4 btn">Clear Locals</button>
+      <div class="col-4"></div> -->
 
-    </div>
+
 <% include _footer %>

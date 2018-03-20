@@ -1,16 +1,15 @@
 * {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 html {
-  height: 100%;
+  /* height: 100%; */
   background: #ffffff;
-  overflow: hidden;
 }
 
 body {
-  height: 100%;
-  margin: 0;
+  /* height: 100%; */
+  /* margin: 0; */
   background-image: (to bottom, #3ec876, #ffffff);
   background-image: -moz-linear-gradient(top, #3ec876, #ffffff);
   background-image: -webkit-linear-gradient(top, #3ec876, #ffffff);
@@ -20,15 +19,11 @@ body {
       GradientType=0
     );
   background-repeat: no-repeat;
-  overflow: hidden;
+
 }
 
 ::-webkit-scrollbar {
   display: none;
-}
-
-.container {
-  width: 80% !important;
 }
 
 .space-after {
@@ -73,8 +68,9 @@ body {
 /* ===== Header ===== */
 /* ================== */
 .title {
-  font-size: 3.25rem;
+  font-size: 3rem;
   color: white;
+  margin-bottom: 0rem;
 }
 
 .description {
@@ -85,8 +81,14 @@ body {
 /* ================== */
 /* ===== Genres ===== */
 /* ================== */
+.genre-modal {
+  margin: 0 auto;
+}
+
 #genre-select .modal-dialog {
-  width: 80%;
+  width: 97.5%;
+  margin-left: -.25%;
+  margin-top: -1%;
 }
 
 #genre-select .modal-body {
@@ -102,7 +104,7 @@ body {
 }
 
 #genres-list .btn {
-  margin: 5px;
+  /* margin: 5px; */
   border: 2px solid #000000;
 }
 
@@ -117,6 +119,11 @@ body {
 /* ==================== */
 /* ===== Switches ===== */
 /* ==================== */
+.top-values {
+  margin: 0 auto;
+  padding: 0;
+}
+
 .mode-label-box {
   border: 1.5px #ffffff solid;
   border-radius: .5rem .5rem 0rem 0rem;
@@ -135,9 +142,9 @@ body {
 
 /* The switch - the box around the slider */
 .switch {
-  /* position: relative; */
-  /* display: inline-block; */
-  height: 55px;
+  position: relative;
+  display: inline-block;
+  height: 5rem;
   margin-left: 1rem;
 }
 
@@ -164,9 +171,9 @@ body {
 .mode-slider:before {
   position: absolute;
   content: '';
-  height: 23px;
-  width: 23px;
-  top: -.5px;
+  height: 2.25rem;
+  width: 2.25rem;
+  top: -.25rem;
   left: -1px;
   background-color: white;
   -webkit-transition: 0.4s;
@@ -185,9 +192,9 @@ input:not(:checked) + .mode-slider {
 }
 
 input:checked + .mode-slider:before {
-  -webkit-transform: translateY(34px);
-  -ms-transform: translateY(34px);
-  transform: translateY(34px);
+  -webkit-transform: translateY(2rem);
+  -ms-transform: translateY(2rem);
+  transform: translateY(2.65rem);
 }
 
 .mode-label {
@@ -204,13 +211,14 @@ input:checked + .mode-slider:before {
 
 .tempo-value-box {
   border: 1.5px #ffffff solid;
-  border-radius: 0rem;
+  border-radius: .5rem .5rem 0rem 0rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
   margin: 0 auto;
 }
 
 .tempo-value {
+  padding-top: 1rem;
   font-size: 2rem;
   color: #1db954;
 }
@@ -222,7 +230,7 @@ input:checked + .mode-slider:before {
 
 .tempo-section {
   background: url('images/tempo-background.svg') top no-repeat;
-  height: 18rem;
+  height: 22rem;
   /* margin: 0 auto; */
 }
 
@@ -277,7 +285,8 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .box {
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
 .value-box {
@@ -364,7 +373,7 @@ html .ui-button.ui-state-disabled:active {
 /* ===== Submit ===== */
 /* ================== */
 .tracks-display {
-  overflow-y: hidden;
+  overflow-y: scroll;
   border: 2px #ffffff solid;
   border-radius: 0.5rem;
   color: white;
@@ -374,45 +383,44 @@ html .ui-button.ui-state-disabled:active {
   height: 25rem;
 }
 
-.track-element {
+/* .track-element {
   padding-right: 2.5rem;
   padding-bottom: 15rem;
-}
+} */
 
 /* .track-element > div {
   display: inherit;
 } */
-
+/*
 .album-art {
   width: 150;
   height: 150;
   margin: 0 auto;
   padding-top:1rem;
+} */
+
+.track-link:clicked {
+  color: #1db954;
+}
+
+.track-number {
+  font-size: 1.25rem;
+  margin-bottom: 0rem;
+}
+
+.track-length {
+  font-size: 1.25rem;
+  margin-bottom: 0rem;
 }
 
 .track-name {
   font-size: 1.25rem;
+  margin-bottom: 0rem;
 }
 
 .artist-name {
   font-size: 1.25rem;
-}
-
-#add-tracks {
-  border: 2px #ffffff solid;
-  border-radius: .5rem;
-  padding-top: .5rem;
-  padding-bottom: 1rem;
-  height: 25rem;
-}
-
-.logo {
-  margin: 0 auto;
-  width: 75%;
-}
-
-.tracks-button-container {
-  padding-top: 3.5rem;
+  margin-top: 0rem;
 }
 
 .tracks-button {
