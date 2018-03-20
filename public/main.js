@@ -393,7 +393,6 @@ function makePlaylist() {
         '&token=' +
         _token
     );
-    alert('Success! Check Spotify for you playlist!');
   } else if (!localStorage.getItem('currentTracks')) {
     console.log('No tracks :/');
   }
@@ -436,7 +435,7 @@ function renderTracks(ids) {
 
 function updatePlaylist() {
   let latestPlaylist =
-    '<iframe class="spotify-player col-md-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
+    '<iframe class="spotify-player col-xs-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
   $("#spotify-player").append(latestPlaylist);
 }
 
