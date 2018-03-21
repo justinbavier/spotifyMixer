@@ -83,6 +83,7 @@ body {
 /* ================== */
 .genre-modal {
   margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 #genre-select .modal-content {
