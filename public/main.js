@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "49d489069bce4a5388c657a3351b176c";
-// const redirectUri = "http://localhost:5000";
-const redirectUri = "https://spotify-mixer.herokuapp.com";
+const redirectUri = "http://localhost:5000";
+// const redirectUri = "https://spotify-mixer.herokuapp.com";
 const scopes = [
   "streaming",
   "user-read-birthdate",
@@ -81,44 +81,45 @@ $("#clear-button").click(function() {
 //   location.reload();
 // }
 
+
 function getGenresList() {
   $("#genres-list").empty();
   $.get("/genres?token=" + _token, function(genres) {
     i = 0;
     genres.forEach(function(genre) {
       if (i % 2 == 0) {
-        let startRow = '<div class="row">';
+        let newRow = '<div class="row">';
         let genreButtonElement =
-          '<label class="btn genre-button btn-gray col-xs-6"><input type="checkbox" value="' +
+          '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
           genre +
           '">' +
           genre +
-          "</label>";
+          "</label></div>";
         $("#genres-list")
-          .append(startRow)
           .append(genreButtonElement);
         i++;
+        console.log(genreButtonElement);
       } else if ((i + 1) % 2 == 0) {
-        let endRow = "</div>";
         let genreButtonElement =
-          '<label class="btn genre-button btn-gray col-xs-6"><input type="checkbox" value="' +
+          '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
           genre +
           '">' +
           genre +
-          "</label>";
+          "</label></div>";
         $("#genres-list")
-          .append(genreButtonElement)
-          .append(endRow);
+          .append(genreButtonElement);
         i++;
+        console.log(genreButtonElement);
       } else {
         let genreButtonElement =
-          '<label class="btn genre-button btn-gray col-xs-6"><input type="checkbox" value="' +
+          '<div class="btn-group-toggle col-5"><label class="btn genre-button col-12"><input class="genre-checkbox" type="checkbox" value="' +
           genre +
           '">' +
           genre +
           "</label>";
         $("#genres-list").append(genreButtonElement);
         i++;
+        console.log('me too');
       }
     });
   });
@@ -382,19 +383,22 @@ function getRecommendations() {
 }
 
 function makePlaylist() {
-  if (localStorage.getItem('currentTracks')) {
+  if (localStorage.getItem("currentTracks")) {
     $.post(
-      '/playlist?tracks=' +
-        localStorage.getItem('currentTracks') +
-        '&genres=' +
-        localStorage.getItem('currentGenres') +
-        '&features=' +
-        localStorage.getItem('currentFeatures') +
-        '&token=' +
-        _token
+      "/playlist?tracks=" +
+        localStorage.getItem("currentTracks") +
+        "&genres=" +
+        localStorage.getItem("currentGenres") +
+        "&features=" +
+        localStorage.getItem("currentFeatures") +
+        "&token=" +
+        _token,
+      function(playlist) {
+        alert("playlist");
+      }
     );
-  } else if (!localStorage.getItem('currentTracks')) {
-    console.log('No tracks :/');
+  } else if (!localStorage.getItem("currentTracks")) {
+    console.log("No tracks :/");
   }
   updatePlaylist();
   clearLocals();
@@ -407,19 +411,19 @@ function renderTracks(ids) {
         ? track.album.images[0].url
         : "https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png";
       let trackElement =
-        '<div class="row"><div class="col-xs-1"></div><div class="track-element col-xs-12" id="' +
+        '<div class="row"><div class="col-1"></div><div class="track-element col-12" id="' +
         track.uri +
-        '"><div class="row"><div class="col-xs-1"></div><img class="album-art col-xs-3" src="' +
+        '"><div class="row"><div class="col-1"></div><img class="album-art col-3" src="' +
         image +
-        '"/><div class="col-xs-7"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
+        '"/><div class="col-7"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
         track.id +
         '" target="_blank"><p class="track-name">' +
         track.name +
         '</p></a></div><div class="row"><p class="artist-name">' +
         track.artists[0].name +
-        ' - ' +
+        " - " +
         track.album.name +
-        '</p></div></div></div><div class="col-xs-1"></div></div>';
+        '</p></div></div></div><div class="col-1"></div></div>';
       $("#tracks").append(trackElement);
     });
   });
@@ -435,7 +439,7 @@ function renderTracks(ids) {
 
 function updatePlaylist() {
   let latestPlaylist =
-    '<iframe class="spotify-player col-xs-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
+    '<iframe class="spotify-player col-xs-10" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
   $("#spotify-player").append(latestPlaylist);
 }
 
@@ -487,7 +491,6 @@ function newPlaylist() {
 }
 
 function refresh() {
-
   location.reload();
 }
 

@@ -99,6 +99,7 @@ module.exports = app => {
           name: displayName + `'s Recommended Tracks`,
           description: "Recommended tracks based on " + genres
         }
+
       };
 
       request.post(options, function(error, response, body) {
@@ -119,6 +120,7 @@ module.exports = app => {
         };
 
         request.post(options, function(error, response, body) {
+
           res.sendStatus(200);
         });
       });

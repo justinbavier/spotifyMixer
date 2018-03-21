@@ -33,7 +33,7 @@ body {
 .btn {
   background: rgba(255, 255, 255, 1);
   color: black;
-  border-radius: 1.5rem;
+  border-radius: .5rem;
 }
 
 .btn:hover {
@@ -68,13 +68,13 @@ body {
 /* ===== Header ===== */
 /* ================== */
 .title {
-  font-size: 3rem;
+  font-size: 1.75rem;
   color: white;
   margin-bottom: 0rem;
 }
 
 .description {
-  font-size: 1.8rem;
+  font-size: 1rem;
   color: white;
 }
 
@@ -85,31 +85,30 @@ body {
   margin: 0 auto;
 }
 
-#genre-select .modal-dialog {
-  width: 97.5%;
-  margin-left: -.25%;
-  margin-top: -1%;
+#genre-select .modal-content {
+  /* background: rgba(62, 200, 118, 0.95); */
+  background: white;
 }
 
 #genre-select .modal-body {
   text-align: center;
 }
 
-#genre-select .modal-content {
-  /* background: rgba(62, 200, 118, 0.95); */
+.genre-button {
+  border: 2px solid black;
+  margin: 0 auto;
+}
+.genre-button.focus {
   background: white;
 }
-#genres-list {
-  text-align: center;
+
+.genre-button.active {
+  background: black;
+  color: white;
 }
 
-#genres-list .btn {
-  /* margin: 5px; */
-  border: 2px solid #000000;
-}
-
-.modal-footer {
-  text-align: center;
+.genre-checkbox {
+  background: yellow;
 }
 
 .modal-footer .btn {
@@ -120,16 +119,20 @@ body {
 /* ===== Switches ===== */
 /* ==================== */
 .top-values {
+  /* margin: 0 auto; */
+  /* padding: 0; */
+}
+
+.top-box {
   margin: 0 auto;
-  padding: 0;
 }
 
 .mode-label-box {
   border: 1.5px #ffffff solid;
-  border-radius: .5rem .5rem 0rem 0rem;
+  /* border-radius: .0rem .0rem 0rem 0rem; */
   padding-top: .75rem;
   padding-bottom: .75rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .mode-text-box {
@@ -137,15 +140,15 @@ body {
   border-radius: 0rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 /* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
-  height: 5rem;
-  margin-left: 1rem;
+  height: 4rem;
+  /* margin-left: 1rem; */
 }
 
 /* Hide default HTML checkbox */
@@ -165,16 +168,16 @@ body {
   transition: 0.4s;
   border-radius: 34px;
   border: 2px solid #ffffff;
-  width: 25px;
+  width: 1.75rem;
 }
 
 .mode-slider:before {
   position: absolute;
   content: '';
-  height: 2.25rem;
-  width: 2.25rem;
-  top: -.25rem;
-  left: -1px;
+  height: 1.7rem;
+  width: 1.7rem;
+  top: -.05rem;
+  left: -.095rem;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -194,55 +197,54 @@ input:not(:checked) + .mode-slider {
 input:checked + .mode-slider:before {
   -webkit-transform: translateY(2rem);
   -ms-transform: translateY(2rem);
-  transform: translateY(2.65rem);
+  transform: translateY(2.3rem);
 }
 
 .mode-label {
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 .mode-text {
   padding-top: 1rem;
-  padding-left: -2rem;
   color: #1db954;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 .tempo-value-box {
   border: 1.5px #ffffff solid;
-  border-radius: .5rem .5rem 0rem 0rem;
+  /* border-radius: .5rem .5rem 0rem 0rem; */
   padding-top: .75rem;
   padding-bottom: .75rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .tempo-value {
   padding-top: 1rem;
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: #1db954;
 }
 
 .tempo-label {
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 .tempo-section {
   background: url('images/tempo-background.svg') top no-repeat;
-  height: 22rem;
+  /* height: 20rem; */
   /* margin: 0 auto; */
 }
 
 .tempo-slider-spacer {
-  height: 5rem;
+  height: 1rem;
 }
 
 .tempo-slider {
   width: 0.1rem;
   margin: 0 auto;
   background: transparent;
-  height: 8rem;
+  height: 10rem;
 }
 
 #tempo-slider .ui-state-default,
@@ -255,9 +257,10 @@ html .ui-button.ui-state-disabled:active {
   background: url('images/fader.svg') center no-repeat;
   outline: none;
   cursor: pointer;
-  height: 5rem;
-  width: 5rem;
-  margin-top: -1.75rem;
+  height: 2.75rem;
+  width: 2.75rem;
+  /* margin-top: 2rem; */
+  margin-left: -1rem;
 }
 
 #tempo-slider .ui-widget.ui-widget-content {
@@ -281,7 +284,7 @@ html .ui-button.ui-state-disabled:active {
   border-radius: .5rem;
   color: white;
   margin: 0 auto;
-  padding: 0;
+  /* padding: 0; */
 }
 
 .box {
@@ -292,12 +295,12 @@ html .ui-button.ui-state-disabled:active {
 .value-box {
   border: 1.5px #ffffff solid;
   border-radius: .5rem .5rem 0rem 0rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .prefs-value {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   color: #1db954;
 }
 
@@ -310,13 +313,13 @@ html .ui-button.ui-state-disabled:active {
 
 .prefs-label {
   color: #ffffff;
-  font-size: 1.15rem;
+  font-size: .75rem;
 }
 
 
 .prefs-section {
-  height: 28rem;
-  margin: 0 auto;
+  height: 17.5rem;
+  /* margin: 0 auto; */
   background: url('images/mixer.svg') top no-repeat;
 }
 
@@ -326,7 +329,7 @@ a:hover {
 }
 
 .slider-spacer {
-  height: 5rem;
+  height: 0rem;
 }
 
 .prefs-slider {
@@ -351,9 +354,10 @@ html .ui-button.ui-state-disabled:active {
   background: url('images/fader.svg') center no-repeat;
   outline: none;
   cursor: pointer;
-  width: 5rem;
-  height: 5rem;
-  margin-left: -1.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  /* margin-top: 2rem; */
+  margin-left: -1rem;
 }
 
 .ui-widget.ui-widget-content {
@@ -377,17 +381,17 @@ html .ui-button.ui-state-disabled:active {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   border: 2px #ffffff solid;
-  border-radius: 0.5rem;
+  border-radius: .25rem .25rem 0rem 0rem;
   color: white;
   margin: 0 auto;
   padding-top: .5rem;
   padding-bottom: 1rem;
-  height: 25rem;
+  height: 12.5rem;
 }
 
 .track-element {
-  height: 9rem;
-  padding-bottom: 2rem;
+  /* height: 4rem; */
+  /* padding-bottom: 1rem; */
 }
 
 /* .track-element > div {
@@ -395,32 +399,37 @@ html .ui-button.ui-state-disabled:active {
 } */
 
 .album-art {
-  width: 100;
-  padding-top: .75rem;
-  margin-bottom: 0rem;
+  width: 70;
+  height: 70;
+  /* padding-top: .75rem; */
+  margin-bottom: 1rem;
 }
 
 .track-link:clicked {
   color: #1db954;
 }
 
+.track-link {
+  color: #1db954;
+}
+
 .track-number {
-  font-size: 1.25rem;
+  font-size: .75rem;
   margin-bottom: 0rem;
 }
 
 .track-length {
-  font-size: 1.25rem;
+  font-size: .75rem;
   margin-bottom: 0rem;
 }
 
 .track-name {
-  font-size: 1.25rem;
+  font-size: .75rem;
   margin-bottom: 0rem;
 }
 
 .artist-name {
-  font-size: 1.25rem;
+  font-size: .75rem;
   margin-top: 0rem;
 }
 
@@ -434,4 +443,30 @@ html .ui-button.ui-state-disabled:active {
 
 .spotify-player {
   margin: 0 auto;
+}
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .top-values {
+
+  }
+}
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .top-values {
+
+  }
+}
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .top-values {
+    display: none;
+  }
+}
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
 }
