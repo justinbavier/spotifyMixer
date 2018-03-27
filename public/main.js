@@ -409,11 +409,11 @@ function renderTracks(ids) {
         ? track.album.images[0].url
         : "https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png";
       let trackElement =
-        '<div class="row border-bottom"><div class="col-1"></div><div class="track-element col-12" id="' +
+        '<div class="row border-bottom"><div class="track-element col-12" id="' +
         track.uri +
-        '"><div class="row"><div class="col-1"></div><img class="album-art col-3" src="' +
+        '"><div class="row"><img class="album-art col-3" src="' +
         image +
-        '"/><div class="col-7"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
+        '"/><div class="col-8"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
         track.id +
         '" target="_blank"><p class="track-name">' +
         track.name +
@@ -426,6 +426,10 @@ function renderTracks(ids) {
     });
   });
 }
+
+// Add individual track button (coming soon...)
+// <div class="col-1"><i class="add-icon material-icons">add</i></div>
+//
 
 // onclick="play(\'' +
 // track.uri +

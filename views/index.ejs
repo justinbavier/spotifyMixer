@@ -1,7 +1,7 @@
 <% include _header %>
     <div class="container">
       <div class="row">
-        <div class="card col-12 col-sm-8 col-md-12">
+        <div class="card col-12 col-md-12">
           <div class="row">
             <div class="space-after"></div>
           </div>
@@ -47,19 +47,21 @@
 
               <!-- TRACKS DISPLAY -->
               <div class="row">
-                <div id="tracks-display" class="tracks-display col-12 col-md-12">
-                  <div class="row">
-                    <div id="tracks">
-                      <div class="row">
-                        <div class="col-2">
-                        </div>
-                        <p class="text-center col-8">
-                          Your recommended tracks will display here!
-                        </p>
-                        <div class="col-2">
+                <div class="tracks-box col-12">
+                  <div id="tracks-display" class="tracks-display">
+                    <!-- <div class="row"> -->
+                      <div id="tracks">
+                        <div class="row">
+                          <div class="col-2">
+                          </div>
+                          <p class="text-center col-8">
+                            Your recommended tracks will display here!
+                          </p>
+                          <div class="col-2">
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    <!-- </div> -->
                   </div>
                 </div>
               </div>
@@ -123,9 +125,11 @@
 
                     <!-- TEMPO SLIDER -->
                     <div class="row">
-                      <div class="tempo-section col-12">
-                        <!-- <div class="tempo-slider-spacer"></div> -->
-                        <div class="tempo-slider" id="tempo-slider"></div>
+                      <div class="tempo-slider-box col-12">
+                        <div class="tempo-section">
+                          <!-- <div class="tempo-slider-spacer"></div> -->
+                          <div class="tempo-slider" id="tempo-slider"></div>
+                        </div>
                       </div>
                     </div>
                     <!-- END TEMPO SLIDER -->
