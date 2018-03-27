@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "49d489069bce4a5388c657a3351b176c";
-// const redirectUri = "http://localhost:5000";
-const redirectUri = "https://spotify-mixer.herokuapp.com";
+const redirectUri = "http://localhost:5000";
+// const redirectUri = "https://spotify-mixer.herokuapp.com";
 const scopes = [
   "streaming",
   "user-read-birthdate",
@@ -81,46 +81,44 @@ $("#clear-button").click(function() {
 //   location.reload();
 // }
 
-
 function getGenresList() {
   $("#genres-list").empty();
   $.get("/genres?token=" + _token, function(genres) {
     i = 0;
     genres.forEach(function(genre) {
-      if (i % 2 == 0) {
-        let newRow = '<div class="row">';
-        let genreButtonElement =
-          '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
-          genre +
-          '">' +
-          genre +
-          "</label></div>";
-        $("#genres-list")
-          .append(genreButtonElement);
-        i++;
-        console.log(genreButtonElement);
-      } else if ((i + 1) % 2 == 0) {
-        let genreButtonElement =
-          '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
-          genre +
-          '">' +
-          genre +
-          "</label></div>";
-        $("#genres-list")
-          .append(genreButtonElement);
-        i++;
-        console.log(genreButtonElement);
-      } else {
-        let genreButtonElement =
-          '<div class="btn-group-toggle col-5"><label class="btn genre-button col-12"><input class="genre-checkbox" type="checkbox" value="' +
-          genre +
-          '">' +
-          genre +
-          "</label>";
-        $("#genres-list").append(genreButtonElement);
-        i++;
-        console.log('me too');
-      }
+      // if (i % 2 == 0) {
+      //   let newRow = '<div class="row">';
+      //   let genreButtonElement =
+      //     '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
+      //     genre +
+      //     '">' +
+      //     genre +
+      //     "</label></div>";
+      //   $("#genres-list")
+      //     .append(genreButtonElement);
+      //   i++;
+      //   console.log(genreButtonElement);
+      // } else if ((i + 1) % 2 == 0) {
+      //   let genreButtonElement =
+      //     '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
+      //     genre +
+      //     '">' +
+      //     genre +
+      //     "</label></div>";
+      //   $("#genres-list")
+      //     .append(genreButtonElement);
+      //   i++;
+      //   console.log(genreButtonElement);
+      // } else {
+      let genreButtonElement =
+        '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
+        genre +
+        '">' +
+        genre +
+        "</label></div>";
+      $("#genres-list").append(genreButtonElement);
+      i++;
+      console.log("me too");
     });
   });
 }
@@ -260,7 +258,7 @@ function setUpSliders() {
   });
 
   $("#tempo-slider").slider({
-    orientation: "vertical",
+    orientation: "horizantal",
     min: 0,
     max: 200,
     step: 1,
