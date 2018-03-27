@@ -409,7 +409,7 @@ function renderTracks(ids) {
         ? track.album.images[0].url
         : "https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png";
       let trackElement =
-        '<div class="row"><div class="col-1"></div><div class="track-element col-12" id="' +
+        '<div class="row border-bottom"><div class="col-1"></div><div class="track-element col-12" id="' +
         track.uri +
         '"><div class="row"><div class="col-1"></div><img class="album-art col-3" src="' +
         image +

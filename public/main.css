@@ -395,7 +395,7 @@ html .ui-button.ui-state-disabled:active {
   border-radius: .25rem .25rem 0rem 0rem;
   color: white;
   margin: 0 auto;
-  padding-top: .5rem;
+  /* padding-top: .5rem; */
   padding-bottom: 1rem;
   height: 12.5rem;
 }
@@ -413,7 +413,8 @@ html .ui-button.ui-state-disabled:active {
   width: 70;
   height: 70;
   /* padding-top: .75rem; */
-  margin-bottom: 1rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
 }
 
 .track-link:clicked {
@@ -436,12 +437,13 @@ html .ui-button.ui-state-disabled:active {
 
 .track-name {
   font-size: .75rem;
+  margin-top: .5rem;
   margin-bottom: 0rem;
 }
 
 .artist-name {
   font-size: .75rem;
-  margin-top: 0rem;
+  /* margin-top: 0rem; */
 }
 
 .tracks-button {
