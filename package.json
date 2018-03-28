@@ -19,7 +19,6 @@
     "express": "^4.16.2",
     "moment": "^2.21.0",
     "nodemon": "^1.17.1",
-    "precision-inputs": "^0.2.5",
     "querystring": "^0.2.0",
     "request": "^2.83.0",
     "superagent": "^3.8.2"

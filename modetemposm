@@ -1,0 +1,86 @@
+<!-- MODE/TEMPO SM/MD SECTION -->
+<div class="side-values d-none d-sm-block d-md-block d-lg-none d-xl-none col-8">
+  <!-- SM/MD TRACKS DISPLAY -->
+  <div class="row">
+    <div class="tracks-box col-12">
+      <div id="tracks-display-sm" class="tracks-display-sm">
+        <!-- <div class="row"> -->
+          <div id="tracks-sm">
+            <div class="row">
+              <div class="col-2">
+              </div>
+              <p class="text-center col-8">
+                Your recommended tracks will display here!
+              </p>
+              <div class="col-2">
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- END SM/MD TRACKS DISPLAY -->
+  <div class="row">
+  <!-- MODE SECTION -->
+  <div class="top-box col-6">
+    <div class="row">
+      <div class="mode-label-box col-12">
+        <div class="mode-label-content">
+          <div class="mode-label text-center">
+            Mode
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mode-text-box col-12">
+        <div class="row">
+          <div class="col-1" onclick="getRecommendations();">
+            <label class="switch">
+              <input id="mode-value-sm" type="checkbox" checked />
+              <span class="mode-slider round"></span>
+            </label>
+          </div>
+
+          <div class="col-1">
+          </div>
+
+          <div class="mode-text col-7" id="mode-text-sm">
+            Minor
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  END MODE SECTION -->
+
+  <!--  TEMPO SECTION -->
+  <div class="top-box col-6">
+    <!--  TEMPO VALUE -->
+    <div class="row">
+      <div class="tempo-value-box col-12">
+        <div class="tempo-content">
+          <div class="tempo-label text-center">
+            Tempo: <span class="tempo-value" id="tempo-value"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TEMPO VALUE -->
+
+    <!-- TEMPO SLIDER -->
+    <div class="row">
+      <div class="tempo-slider-box col-12">
+        <div class="tempo-section">
+          <!-- <div class="tempo-slider-spacer"></div> -->
+          <div class="tempo-slider" id="tempo-slider"></div>
+        </div>
+      </div>
+    </div>
+    <!-- END TEMPO SLIDER -->
+  </div>
+  <!--  END TEMPO SECTION -->
+  </div>
+</div>
+<!-- END MODE/TEMPO SM/MD SECTION -->

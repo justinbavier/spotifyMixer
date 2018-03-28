@@ -35,7 +35,7 @@ if (!_token) {
 }
 
 // Page Setup
-// showUser();
+showUser();
 setUpSliders();
 setUpMode();
 
@@ -43,73 +43,17 @@ $(function() {
   $('[data-toggle="popover"]').popover();
 });
 
-// Button Functions
-// $('#logout-button').click(function() {
-//   logout();
-//   return false;
-// });
-
-// $('#submit-button').click(function() {
-//   newPlaylist();
-//   return false;
-// });
-
-// $('#tracks-button').click(function() {
-//   addTracks();
-//   return false;
-// });
-
-$("#clear-button").click(function() {
-  clearCache();
-  location.reload();
-  return false;
-});
-
-// function showUser() {
-//   $.get('/user?token=' + _token, function(user) {
-//     $('#current-user').text(user.id);
-//     $('#display-name').text(user.display_name);
-//   });
-// }
-
-// Need to make this a more streamlined process
-// Currently opens logout page in new tab
-// Logout only truly happens upon manual refresh
-// function logout() {
-//   _token = null;
-//   window.open('https://accounts.spotify.com/logout');
-//   location.reload();
-// }
+function showUser() {
+  $.get('/user?token=' + _token, function(user) {
+    $('#current-user').text(user.id);
+    $('#display-name').text(user.display_name);
+  });
+}
 
 function getGenresList() {
   $("#genres-list").empty();
   $.get("/genres?token=" + _token, function(genres) {
-    i = 0;
     genres.forEach(function(genre) {
-      // if (i % 2 == 0) {
-      //   let newRow = '<div class="row">';
-      //   let genreButtonElement =
-      //     '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
-      //     genre +
-      //     '">' +
-      //     genre +
-      //     "</label></div>";
-      //   $("#genres-list")
-      //     .append(genreButtonElement);
-      //   i++;
-      //   console.log(genreButtonElement);
-      // } else if ((i + 1) % 2 == 0) {
-      //   let genreButtonElement =
-      //     '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
-      //     genre +
-      //     '">' +
-      //     genre +
-      //     "</label></div>";
-      //   $("#genres-list")
-      //     .append(genreButtonElement);
-      //   i++;
-      //   console.log(genreButtonElement);
-      // } else {
       let genreButtonElement =
         '<div class="btn-group-toggle"><label class="btn genre-button"><input class="genre-checkbox" type="checkbox" value="' +
         genre +
@@ -117,8 +61,6 @@ function getGenresList() {
         genre +
         "</label></div>";
       $("#genres-list").append(genreButtonElement);
-      i++;
-      console.log("me too");
     });
   });
 }
@@ -292,6 +234,7 @@ function setUpSliders() {
   });
 }
 
+
 function getSliderValues() {
   let values = {};
 
@@ -307,11 +250,14 @@ function getSliderValues() {
   let target_liveness = $("#liveness-slider").slider("values", 0);
   let target_speechiness = $("#speechiness-slider").slider("values", 0);
   let target_tempo = $("#tempo-slider").slider("values", 0);
+  let target_mode;
 
   if ($("#mode-value").is(":checked")) {
+    target_mode = 0;
     values["target_mode"] = 0;
     $("#mode-text").text("Minor");
   } else if ($("#mode-value").is(":not(:checked)")) {
+    target_mode = 1;
     values["target_mode"] = 1;
     $("#mode-text").text("Major");
   }
@@ -325,8 +271,8 @@ function getSliderValues() {
   values["target_liveness"] = target_liveness;
   values["target_speechiness"] = target_speechiness;
   values["target_tempo"] = target_tempo;
+  values["target_mode"] = target_mode;
 
-  console.log(values);
   return values;
 }
 
@@ -392,11 +338,11 @@ function makePlaylist() {
         "&token=" +
         _token,
       function(playlist) {
-        alert("playlist");
+
       }
     );
   } else if (!localStorage.getItem("currentTracks")) {
-    console.log("No tracks :/");
+    alert("No tracks :/");
   }
   updatePlaylist();
   clearLocals();
@@ -423,22 +369,12 @@ function renderTracks(ids) {
         track.album.name +
         '</p></div></div></div><div class="col-1"></div></div>';
       $("#tracks").append(trackElement);
+      $("#tracks-sm").append(trackElement);
     });
   });
 }
 
-// Add individual track button (coming soon...)
-// <div class="col-1"><i class="add-icon material-icons">add</i></div>
-//
-
-// onclick="play(\'' +
-// track.uri +
-// '\');"
-
-// <div class="row"><img class="album-art" src="' +
-// image +
-// '"/></div>
-
+// Need to work on this
 function updatePlaylist() {
   let latestPlaylist =
     '<iframe class="spotify-player col-xs-10" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
@@ -465,43 +401,35 @@ function addTracks() {
 }
 
 //User creates new playlist upon login
-function newPlaylist() {
-  let playlistName = document.getElementById("playlist-name").value;
-  let playlistDescription = document.getElementById("playlist-description")
-    .value;
-  if (!playlistName) {
-    alert("Please give you playlist a name!");
-  } else if (playlistName) {
-    $.post(
-      "/newPlaylist?playlistName=" +
-        playlistName +
-        "&playlistDescription=" +
-        playlistDescription +
-        "&token=" +
-        _token,
-      function(playlist) {
-        localStorage.setItem("currentPlaylist", playlist.href);
-        localStorage.setItem("playlistName", playlist.name);
-        alert(
-          "Playlist " +
-            localStorage.getItem("playlistName") +
-            " successfully created!"
-        );
-      }
-    );
-  }
-}
+// function newPlaylist() {
+//   let playlistName = document.getElementById("playlist-name").value;
+//   let playlistDescription = document.getElementById("playlist-description")
+//     .value;
+//   if (!playlistName) {
+//     alert("Please give you playlist a name!");
+//   } else if (playlistName) {
+//     $.post(
+//       "/newPlaylist?playlistName=" +
+//         playlistName +
+//         "&playlistDescription=" +
+//         playlistDescription +
+//         "&token=" +
+//         _token,
+//       function(playlist) {
+//         localStorage.setItem("currentPlaylist", playlist.href);
+//         localStorage.setItem("playlistName", playlist.name);
+//         alert(
+//           "Playlist " +
+//             localStorage.getItem("playlistName") +
+//             " successfully created!"
+//         );
+//       }
+//     );
+//   }
+// }
 
 function refresh() {
   location.reload();
-}
-
-function clearCache() {
-  localStorage.setItem("currentTracks", "");
-  localStorage.setItem("currentGenres", "");
-  localStorage.setItem("currentFeatures", "");
-  localStorage.setItem("currentPlaylist", "");
-  _token = null;
 }
 
 function clearLocals() {

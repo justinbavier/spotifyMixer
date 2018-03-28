@@ -10,14 +10,15 @@ html {
 body {
   /* height: 100%; */
   /* margin: 0; */
-  background-image: (to bottom, #3ec876, #ffffff);
+  /* background-image: (to bottom, #3ec876, #ffffff);
   background-image: -moz-linear-gradient(top, #3ec876, #ffffff);
   background-image: -webkit-linear-gradient(top, #3ec876, #ffffff);
   filter: progid:DXImageTransform.Microsoft.gradient(
       startColorstr='#89023E',
       endColorstr='#000000',
       GradientType=0
-    );
+    ); */
+  background-color: #1A1A1D;
   background-repeat: no-repeat;
 
 }
@@ -55,7 +56,8 @@ body {
 }
 
 .card {
-  background: rgba(0, 0, 0, 0.85);
+  /* background: rgba(0, 0, 0, 0.85); */
+  background: transparent;
   border-radius: 0rem;
   padding: 5%;
   padding-top: .5rem;
@@ -69,7 +71,7 @@ body {
 /* ================== */
 .title {
   font-size: 1.75rem;
-  color: white;
+  color: #1db954;
   margin-bottom: 0rem;
 }
 
@@ -135,7 +137,7 @@ body {
 }
 
 .top-box {
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .mode-label-box {
@@ -392,7 +394,7 @@ html .ui-button.ui-state-disabled:active {
 /* ===== Submit ===== */
 /* ================== */
 .tracks-box {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border: 2px #ffffff solid;
   border-radius: .25rem .25rem 0rem 0rem;
   color: white;
@@ -477,23 +479,17 @@ html .ui-button.ui-state-disabled:active {
 
  /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  .top-values {
 
-  }
 }
 
  /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  .top-values {
 
-  }
 }
 
  /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .top-values {
-    display: none;
-  }
+
 }
 
  /* Extra large devices (large desktops, 1200px and up) */

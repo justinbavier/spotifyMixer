@@ -1,20 +1,26 @@
 <% include _header %>
     <div class="container">
       <div class="row">
-        <div class="card col-12 col-md-12">
+        <div class="card col-12 col-lg-12">
           <div class="row">
             <div class="space-after"></div>
           </div>
 
           <!-- TOP SECTION -->
           <div class="row">
-            <div class="col-12">
+            <div class="col-lg-1 d-none d-sm-none d-md-none d-lg-block d-xl-block"></div>
+            <div class="col-12 col-sm-12 col-md12 col-lg-10 col-xl-10">
             <!-- HEADER -->
 
                 <!-- TITLE -->
                 <div class="row">
                   <p class="title text-center col-12">
-                    Spotify Mixer
+                    Hey, <span id="display-name"></span>!
+                  </p>
+                </div>
+                <div class="row">
+                  <p class="title text-center col-12">
+                    Welcome to the Spotify Mixer!
                   </p>
                 </div>
                 <!-- END TITLE -->
@@ -47,7 +53,7 @@
 
               <!-- TRACKS DISPLAY -->
               <div class="row">
-                <div class="tracks-box col-12">
+                <div class="tracks-box col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                   <div id="tracks-display" class="tracks-display">
                     <!-- <div class="row"> -->
                       <div id="tracks">
@@ -65,86 +71,108 @@
                   </div>
                 </div>
               </div>
-            <!-- END TRACKS DISPLAY -->
-
-
-
+              <!-- END TRACKS DISPLAY -->
             </div>
           </div>
           <!--  END TOP SECTION -->
+
+
+          <!-- MODE/TEMPO SECTION -->
+          <div class="row">
+            <!-- SPACER -->
+            <div class="d-none d-sm-none d-md-none d-lg-block d-xl-block col-lg-1 col-xl-1"></div>
+            <!-- END SPACER -->
+
+            <!-- GADGET -->
+            <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block col-md-2 col-lg-2 col-xl-2"></div>
+            <!-- END GADGET -->
+
+            <div class="top-values col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
               <div class="row">
-                <div class="top-values col-12 col-md-6">
-                  <div class="row">
-                  <!--  MODE SECTION -->
-                  <div class="top-box col-6">
-                    <div class="row">
-                      <div class="mode-label-box col-12">
-                        <div class="mode-label-content">
-                          <div class="mode-label text-center">
-                            Mode
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="mode-text-box col-12">
-                        <div class="row">
-                          <div class="col-1" onclick="getRecommendations();">
-                            <label class="switch">
-                              <input id="mode-value" type="checkbox" checked />
-                              <span class="mode-slider round"></span>
-                            </label>
-                          </div>
-
-                          <div class="col-1">
-                          </div>
-
-                          <div class="mode-text col-7" id="mode-text">
-                            Minor
-                          </div>
-                        </div>
+              <!--  MODE SECTION -->
+              <div class="top-box col-6 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                <div class="row">
+                  <div class="mode-label-box col-12">
+                    <div class="mode-label-content">
+                      <div class="mode-label text-center">
+                        Mode
                       </div>
                     </div>
                   </div>
-                  <!--  END MODE SECTION -->
+                </div>
 
-                  <!--  TEMPO SECTION -->
-                  <div class="top-box col-6">
-                    <!--  TEMPO VALUE -->
+                <div class="row">
+                  <div class="mode-text-box col-12">
                     <div class="row">
-                      <div class="tempo-value-box col-12">
-                        <div class="tempo-content">
-                          <div class="tempo-label text-center">
-                            Tempo: <span class="tempo-value" id="tempo-value"></span>
-                          </div>
-                        </div>
+                      <div class="col-1" onclick="getRecommendations();">
+                        <label class="switch">
+                          <input id="mode-value" type="checkbox" checked />
+                          <span class="mode-slider round"></span>
+                        </label>
+                      </div>
+
+                      <div class="col-1">
+                      </div>
+
+                      <div class="mode-text col-7" id="mode-text">
+                        Minor
                       </div>
                     </div>
-                    <!-- END TEMPO VALUE -->
-
-                    <!-- TEMPO SLIDER -->
-                    <div class="row">
-                      <div class="tempo-slider-box col-12">
-                        <div class="tempo-section">
-                          <!-- <div class="tempo-slider-spacer"></div> -->
-                          <div class="tempo-slider" id="tempo-slider"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- END TEMPO SLIDER -->
-
-                  </div>
-                  <!--  END TEMPO SECTION -->
                   </div>
                 </div>
               </div>
+              <!--  END MODE SECTION -->
 
-
-            <div class="row">
-              <div class="fader-values col-12 col-sm-12 col-md-12">
+              <!--  TEMPO SECTION -->
+              <div class="top-box col-6 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                <!--  TEMPO VALUE -->
                 <div class="row">
-                  <div class="box col-3 col-md-1">
+                  <div class="tempo-value-box col-12">
+                    <div class="tempo-content">
+                      <div class="tempo-label text-center">
+                        Tempo: <span class="tempo-value" id="tempo-value"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END TEMPO VALUE -->
+
+                <!-- TEMPO SLIDER -->
+                <div class="row">
+                  <div class="tempo-slider-box col-12">
+                    <div class="tempo-section">
+                      <div class="tempo-slider" id="tempo-slider"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END TEMPO SLIDER -->
+
+              </div>
+              <!--  END TEMPO SECTION -->
+              </div>
+            </div>
+
+
+            <!-- GADGET -->
+            <div class="d-none d-sm-block d-md-block d-lg-none d-xl-none col-sm-2 col-md-2"></div>
+            <!-- END GADGET -->
+
+          </div>
+          <!-- END MODE/TEMPO SECTION -->
+
+          <!-- FADERS SECTION -->
+          <div class="row">
+              <div class="fader-values col-12">
+                <div class="row">
+                  <!-- SPACER -->
+                  <div class="col-lg-2 col-xl-2 d-none d-sm-none d-md-none d-lg-block d-xl-block"></div>
+                  <!-- END SPACER -->
+
+                  <!-- GADGET -->
+                  <div class="gadget-box col-sm-2 d-none d-sm-block d-md-block d-lg-none d-xl-none"></div>
+                  <!-- END GADGET -->
+
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -165,7 +193,7 @@
 
 
                   </div>
-                  <div class="box col-3 col-md-1">
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
                       <div class="value-box">
                         <div class="value-content">
                           <div class="prefs-value text-center" id="positivity-value"></div>
@@ -184,7 +212,7 @@
                       </div>
 
                   </div>
-                  <div class="box col-3 col-md-1">
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -204,7 +232,7 @@
                       </div>
 
                   </div>
-                  <div class="box col-3 col-md-1">
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -224,7 +252,13 @@
                       </div>
 
                   </div>
-                  <div class="box col-3 col-md-1">
+
+                  <!-- GADGETS -->
+                  <div class="gadget-box col-sm-2 d-none d-sm-block d-md-block d-lg-none d-xl-none"></div>
+                  <div class="gadget-box col-sm-2 d-none d-sm-block d-md-block d-lg-none d-xl-none"></div>
+                  <!-- END GADGETS -->
+
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -244,7 +278,7 @@
                       </div>
 
                   </div>
-                  <div class="box col-3 col-md-1">
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -264,7 +298,7 @@
                       </div>
 
                     </div>
-                  <div class="box col-3 col-md-1">
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -284,7 +318,7 @@
                       </div>
 
                   </div>
-                  <div class="box col-3 col-md-1">
+                  <div class="box col-3 col-sm-2 col-md-2 col-lg-1">
 
                       <div class="value-box">
                         <div class="value-content">
@@ -304,9 +338,15 @@
                       </div>
 
                   </div>
+
+                  <!-- GADGET -->
+                  <div class="gadget-box col-sm-2 d-none d-sm-block d-md-block d-lg-none d-xl-none"></div>
+                  <!-- END GADGETS -->
+
                 </div>
               </div>
             </div>
+            <!-- END FADERS SECTION -->
 
             <div class="space-after"></div>
 
