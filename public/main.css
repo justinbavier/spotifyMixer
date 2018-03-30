@@ -81,7 +81,7 @@ body {
 }
 
 .other-box {
-  background: url('images/gadget-tl.svg') center no-repeat;
+  background: url('images/gadget.svg') center no-repeat;
   margin-top: .78rem;
   margin-bottom: .78rem;
   height: 8rem;
@@ -426,7 +426,7 @@ html .ui-button.ui-state-disabled:active {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 1rem;
-  height: 12.5rem;
+  height: 17.5rem;
 }
 
 .border-bottom {
@@ -435,7 +435,8 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .track-element {
-  height: 7rem;
+  height: auto;
+  padding-top: .25rem;
   overflow-y: hidden;
 }
 
@@ -450,11 +451,11 @@ html .ui-button.ui-state-disabled:active {
 } */
 
 .album-art {
-  width: 75;
-  height: 75;
+  /* height: auto;
+  max-width: 100%; */
   /* padding-top: .75rem; */
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-top: 1rem; */
+  /* margin-bottom: 1rem; */
 }
 
 .track-link:clicked {
@@ -477,7 +478,6 @@ html .ui-button.ui-state-disabled:active {
 
 .track-name {
   font-size: .75rem;
-  margin-top: 1rem;
   margin-bottom: 0rem;
 }
 

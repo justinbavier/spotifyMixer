@@ -357,9 +357,9 @@ function renderTracks(ids) {
       let trackElement =
         '<div class="row border-bottom"><div class="track-element col-12" id="' +
         track.uri +
-        '"><div class="row"><img class="album-art col-3" src="' +
+        '"><div class="row"><div class="album-box col-3"><img class="album-art img-fluid" src="' +
         image +
-        '"/><div class="col-8"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
+        '"/></div><div class="col-9"><div class="row"><a class="track-link" href="https://open.spotify.com/track/' +
         track.id +
         '" target="_blank"><p class="track-name">' +
         track.name +
