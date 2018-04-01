@@ -68,6 +68,7 @@ module.exports = app => {
     let genres = req.query.genres;
     let token = req.query.token;
     let features = req.query.features;
+    let playlistName = req.query.playlistName;
     let userId, playlistUrl;
 
     // Get User Id
@@ -82,6 +83,9 @@ module.exports = app => {
     request.get(options, function(error, response, body) {
       userId = body.id;
       displayName = body.display_name;
+      if (playlistName == "") {
+        playlistName = displayName + "'s Recommended Tracks"
+      }
 
       // Create Playlist
       requestUrl = spotifyBaseUrl + "users/" + userId + "/playlists";
@@ -95,7 +99,7 @@ module.exports = app => {
         json: true,
         dataType: "json",
         body: {
-          name: displayName + `'s Recommended Tracks`,
+          name: playlistName,
           description: "Recommended tracks based on " + genres
         }
       };

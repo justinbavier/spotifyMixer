@@ -362,7 +362,7 @@
                 <div class="row">
                   <div class="col-2">
                   </div>
-                    <button class="tracks-button btn col-8" id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" onclick="makePlaylist();">
+                    <button class="tracks-button btn col-8" id="tracks-button" type="submit" data-toggle="modal" data-target="#playlist-prompt">
                       Add tracks!
                     </button>
                   <div class="col-2">
@@ -408,6 +408,35 @@
             </div>
           </div>
           <!--  END GENRE MODAL -->
+
+          <!-- PLAYLIST NAME MODAL -->
+          <div class="modal fade" id="playlist-prompt">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">
+                    <p class="text-center">
+                      Give your playlist a name?
+                    </p>
+                  </h4>
+                </div>
+                <form>
+                  <div class="modal-body">
+                    <p>You don't have to name your playlist, but it'd be a lot cooler if you did...</p>
+                    <div class="form-group">
+                      <label for="playlist-name"></label>
+                      <input type="text" class="form-control" id="playlist-name" placeholder="Playlist Name" onkeydown = "if (event.keyCode == 13) {
+                        document.getElementById('submit-button').click(); alert('Thanks! Head over to Spotify to check out your playlist...'); }" >
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button id="submit-button" type="button" class="btn" data-dismiss="modal" data-toggle="modal" data-target="#success-prompt" onclick="makePlaylist();">Make your playlist!</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- END PLAYLIST NAME MODAL -->
 
           <!--  SUCCESS MODAL -->
           <div class="modal fade" id="success-prompt">

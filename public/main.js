@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "49d489069bce4a5388c657a3351b176c";
-// const redirectUri = "https://spotify-mixer.herokuapp.com";
-const redirectUri = "http://localhost:5000";
+const redirectUri = "https://spotify-mixer.herokuapp.com";
+// const redirectUri = "http://localhost:5000";
 const scopes = [
   "streaming",
   "user-read-birthdate",
@@ -330,6 +330,7 @@ function makePlaylist() {
     alert("No tracks :/ Try again...");
     refresh();
   } else if (localStorage.getItem("currentTracks")) {
+    let playlistName = document.getElementById("playlist-name").value;
     $.post(
       "/playlist?tracks=" +
         localStorage.getItem("currentTracks") +
@@ -337,6 +338,8 @@ function makePlaylist() {
         localStorage.getItem("currentGenres") +
         "&features=" +
         localStorage.getItem("currentFeatures") +
+        "&playlistName=" +
+        playlistName +
         "&token=" +
         _token,
       function(playlist) {}
