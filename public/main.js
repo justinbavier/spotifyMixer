@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "49d489069bce4a5388c657a3351b176c";
-// const redirectUri = "https://spotify-mixer.herokuapp.com";
-const redirectUri = "http://localhost:5000";
+const redirectUri = "https://spotify-mixer.herokuapp.com";
+// const redirectUri = "http://localhost:5000";
 const scopes = [
   "streaming",
   "user-read-birthdate",
