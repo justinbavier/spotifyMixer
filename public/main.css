@@ -512,7 +512,7 @@ html .ui-button.ui-state-disabled:active {
   }
 
   .slider-spacer {
-    height: 12.5%;
+    height: 15%;
   }
 
   .prefs-slider {
@@ -525,25 +525,25 @@ html .ui-button.ui-state-disabled:active {
   .ui-button,
   html .ui-button.ui-state-disabled:hover,
   html .ui-button.ui-state-disabled:active {
-    height: 2.15rem;
-    width: 2.15rem;
+    height: 2.75rem;
+    width: 2.75rem;
     margin-top: 1.15rem;
   }
 }
 
 @media (max-width: 400px) {
   .slider-spacer {
-    height: 15%;
+    height: 16%;
   }
 
   .prefs-slider {
-    height: 70%;
+    height: 65%;
   }
 }
 
 @media (max-width: 300px) {
   .slider-spacer {
-    height: 12%;
+    height: 14%;
   }
 
   .prefs-slider {
