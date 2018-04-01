@@ -346,24 +346,18 @@
                         <div class="slider-spacer"></div>
                         <div class="prefs-slider" id="speechiness-slider"></div>
                       </div>
-
                   </div>
-
                   <!-- GADGET -->
                   <div class="gadget-box col-sm-2 col-lg-1 col-xl-1 d-none d-sm-block d-md-block d-lg-block d-xl-block"></div>
                   <!-- END GADGETS -->
-
                 </div>
               </div>
             </div>
             <!-- END FADERS SECTION -->
-
             <div class="space-after"></div>
-
             <!-- SUBMIT PANE -->
             <div class="row">
               <div class="col-12">
-
                 <!-- ADD BUTTON -->
                 <div class="row">
                   <div class="col-2">
@@ -375,21 +369,16 @@
                   </div>
                 </div>
                 <!--  END ADD BUTTON -->
-
               </div>
             </div>
             <!-- END SUBMIT PANE -->
-
           </div>
           <!--  BOTTOM OF CARD -->
         </div>
-
       </div>
 
         <!--  MODALS -->
-
           <!-- GENRE MODAL -->
-
           <div class="modal genre-modal fade text-center" id="genre-select">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -418,38 +407,9 @@
               </div>
             </div>
           </div>
-
           <!--  END GENRE MODAL -->
 
-          <!-- PLAYLIST SETUP MODAL -->
-          <div class="modal fade" id="playlist-setup">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Please provide the following information:</h4>
-                </div>
-                <div class="form">
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label for="playlist-name">Playlist Name</label>
-                      <input type="text" class="form-control" id="playlist-name" placeholder="Playlist Name">
-                    </div>
-                    <div class="form-group">
-                      <label for="playlist-description">Give your playlist a description...</label>
-                      <textarea type="text" class="form-control" id="playlist-description" rows="3"></textarea>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" type="submit" class="btn" data-dismiss="modal" onclick="newPlaylist();">Create Playlist</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END PLAYLIST SETUP MODAL -->
-
           <!--  SUCCESS MODAL -->
-
           <div class="modal fade" id="success-prompt">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -460,16 +420,9 @@
                 </div>
                 <form>
                   <div class="modal-body">
-                    <div class="row">
-                      <p class="text-center">
-                        Check out your brand new playlist!
-                      </p>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-xs-1"></div>
-                      <div id="spotify-player"></div>
-                    </div>
+                    <p>
+                      New playlist created! Head over to Spotify to check it out...
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn" data-dismiss="modal" onclick="refresh();">Thank you!</button>
@@ -479,12 +432,5 @@
             </div>
           </div>
           <!--  END SUCCESS MODAL -->
-
         <!--  END MODALS-->
-<!--
-      <div class="col-4"></div>
-        <button style="margin-bottom: 3rem;" id="clear-button" type="submit" class="clear-button col-4 btn">Clear Locals</button>
-      <div class="col-4"></div> -->
-
-
 <% include _footer %>

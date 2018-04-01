@@ -44,9 +44,9 @@ $(function() {
 });
 
 function showUser() {
-  $.get('/user?token=' + _token, function(user) {
-    $('#current-user').text(user.id);
-    $('#display-name').text(user.display_name);
+  $.get("/user?token=" + _token, function(user) {
+    $("#current-user").text(user.id);
+    $("#display-name").text(user.display_name);
   });
 }
 
@@ -234,7 +234,6 @@ function setUpSliders() {
   });
 }
 
-
 function getSliderValues() {
   let values = {};
 
@@ -327,7 +326,10 @@ function getRecommendations() {
 }
 
 function makePlaylist() {
-  if (localStorage.getItem("currentTracks")) {
+  if (!localStorage.getItem("currentTracks")) {
+    alert("No tracks :/ Try again...");
+    refresh();
+  } else if (localStorage.getItem("currentTracks")) {
     $.post(
       "/playlist?tracks=" +
         localStorage.getItem("currentTracks") +
@@ -337,14 +339,9 @@ function makePlaylist() {
         localStorage.getItem("currentFeatures") +
         "&token=" +
         _token,
-      function(playlist) {
-
-      }
+      function(playlist) {}
     );
-  } else if (!localStorage.getItem("currentTracks")) {
-    alert("No tracks :/");
   }
-  updatePlaylist();
   clearLocals();
 }
 
@@ -373,60 +370,6 @@ function renderTracks(ids) {
     });
   });
 }
-
-// Need to work on this
-function updatePlaylist() {
-  let latestPlaylist =
-    '<iframe class="spotify-player col-xs-10" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
-  $("#spotify-player").append(latestPlaylist);
-}
-
-function addTracks() {
-  if (localStorage.getItem("currentTracks")) {
-    $.post(
-      "/addTracks?tracks=" +
-        localStorage.getItem("currentTracks") +
-        "&token=" +
-        _token
-    );
-    updatePlaylist();
-    clearLocals();
-  } else if (!localStorage.getItem("currentTracks")) {
-    alert(`There's no tracks to add! Pick a genre...`);
-  } else if (!localStorage.getItem("currentPlaylist")) {
-    alert(
-      `You can't add tracks to a playlist you haven't created yet! Click the button...`
-    );
-  }
-}
-
-//User creates new playlist upon login
-// function newPlaylist() {
-//   let playlistName = document.getElementById("playlist-name").value;
-//   let playlistDescription = document.getElementById("playlist-description")
-//     .value;
-//   if (!playlistName) {
-//     alert("Please give you playlist a name!");
-//   } else if (playlistName) {
-//     $.post(
-//       "/newPlaylist?playlistName=" +
-//         playlistName +
-//         "&playlistDescription=" +
-//         playlistDescription +
-//         "&token=" +
-//         _token,
-//       function(playlist) {
-//         localStorage.setItem("currentPlaylist", playlist.href);
-//         localStorage.setItem("playlistName", playlist.name);
-//         alert(
-//           "Playlist " +
-//             localStorage.getItem("playlistName") +
-//             " successfully created!"
-//         );
-//       }
-//     );
-//   }
-// }
 
 function refresh() {
   location.reload();

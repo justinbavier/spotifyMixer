@@ -1,6 +1,5 @@
 var request = require("request");
 var querystring = require("querystring");
-var moment = require("moment");
 
 const spotifyBaseUrl = "https://api.spotify.com/v1/";
 
@@ -99,7 +98,6 @@ module.exports = app => {
           name: displayName + `'s Recommended Tracks`,
           description: "Recommended tracks based on " + genres
         }
-
       };
 
       request.post(options, function(error, response, body) {
@@ -120,12 +118,12 @@ module.exports = app => {
         };
 
         request.post(options, function(error, response, body) {
-
           res.sendStatus(200);
         });
       });
     });
   });
+  // End playlist function
 
   app.get("/tracks", function(req, res) {
     let ids = req.query.ids;
@@ -147,77 +145,6 @@ module.exports = app => {
 
     request.get(options, function(error, response, body) {
       res.json(body.tracks);
-    });
-  });
-
-  // 1. Create Empty Playlist
-  app.post("/newPlaylist", function(req, res) {
-    let token = req.query.token;
-    let playlistName = req.query.playlistName;
-    let playlistDescription = req.query.playlistDescription;
-    let userId, playlistUrl;
-    // Get User Id
-    let requestUrl = spotifyBaseUrl + "me";
-
-    let options = {
-      url: requestUrl,
-      headers: { Authorization: "Bearer " + token },
-      json: true
-    };
-
-    request.get(options, function(error, response, body) {
-      userId = body.id;
-      displayName = body.display_name;
-      // Create Playlist
-      requestUrl = spotifyBaseUrl + "users/" + userId + "/playlists";
-
-      options = {
-        url: requestUrl,
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json"
-        },
-        json: true,
-        dataType: "json",
-        body: {
-          name: playlistName,
-          description: playlistDescription
-        }
-      };
-      request.post(options, function(error, response, body) {
-        res.json(body);
-      });
-    });
-  });
-
-  // 2.
-  app.post("/addTracks", function(req, res) {
-    let tracks = req.query.tracks;
-    //let genres = req.query.genres;
-    let token = req.query.token;
-    //let features = req.query.features;
-    let userId;
-    let playlistUrl =
-      "https://api.spotify.com/v1/users/bavier123/playlists/3lQ94EvUZ5eockX8VJ1Zom";
-
-    // let playlistUrl = req.query.playlistUrl;
-
-    // 3. Add tracks to playlist
-    requestUrl =
-      playlistUrl +
-      "/tracks?" +
-      querystring.stringify({
-        uris: tracks
-      });
-
-    options = {
-      url: requestUrl,
-      headers: { Authorization: "Bearer " + token },
-      json: true
-    };
-
-    request.post(options, function(error, response, body) {
-      res.sendStatus(200);
     });
   });
 };
