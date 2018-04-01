@@ -279,7 +279,7 @@ input:checked + .mode-slider:before {
 }
 
 .tempo-slider {
-  width: 5rem;
+  width: 85%;
   margin: 0 auto;
   background: transparent;
   /* height: 12rem; */
@@ -297,8 +297,8 @@ html .ui-button.ui-state-disabled:active {
   cursor: pointer;
   height: 2.75rem;
   width: 2.75rem;
-  margin-top: .5rem;
-  margin-left: -1rem;
+  margin-top: .65rem;
+  margin-left: -1.35rem;
 }
 
 #tempo-slider .ui-widget.ui-widget-content {
@@ -366,15 +366,11 @@ a:hover {
   color: #ffffff;
 }
 
-.slider-spacer {
-  height: 0rem;
-}
-
 .prefs-slider {
   margin: 0 auto;
   width: 0.1rem;
   background: transparent;
-  height: 16.5rem;
+  /* height: 70%; */
 }
 
 .ui-widget-header .ui-slider-range {
@@ -426,7 +422,7 @@ html .ui-button.ui-state-disabled:active {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 1rem;
-  height: 17.5rem;
+  /* height: 17.5rem; */
 }
 
 .border-bottom {
@@ -446,16 +442,9 @@ html .ui-button.ui-state-disabled:active {
   height: 2rem;
 }
 
-/* .track-element > div {
-  display: inherit;
-} */
-
-.album-art {
-  /* height: auto;
-  max-width: 100%; */
-  /* padding-top: .75rem; */
-  /* margin-top: 1rem; */
-  /* margin-bottom: 1rem; */
+.track-link:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .track-link:clicked {
@@ -484,6 +473,7 @@ html .ui-button.ui-state-disabled:active {
 .artist-name {
   font-size: .75rem;
   /* margin-top: 0rem; */
+  overflow-y: hidden;
 }
 
 .tracks-button {
@@ -498,22 +488,181 @@ html .ui-button.ui-state-disabled:active {
   margin: 0 auto;
 }
 
- /* Small devices (landscape phones, 576px and up) */
+/* Extra small devices (Less than 575px) */
+@media (max-width: 575px) {
+  .tracks-display {
+    height: 15rem;
+  }
+
+  .track-element {
+    padding-top: .65rem;
+    padding-bottom: .55rem;
+    overflow-y: hidden;
+  }
+
+  .track-name {
+    font-size: .8rem;
+    margin-bottom: 0rem;
+  }
+
+  .artist-name {
+    font-size: .65rem;
+    margin-bottom: 0rem;
+    overflow-y: hidden;
+  }
+
+  .slider-spacer {
+    height: 12.5%;
+  }
+
+  .prefs-slider {
+    height: 70%;
+  }
+
+  #tempo-slider .ui-state-default,
+  .ui-widget-content .ui-state-default,
+  .ui-widget-header .ui-state-default,
+  .ui-button,
+  html .ui-button.ui-state-disabled:hover,
+  html .ui-button.ui-state-disabled:active {
+    height: 2.15rem;
+    width: 2.15rem;
+    margin-top: 1.15rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .slider-spacer {
+    height: 15%;
+  }
+
+  .prefs-slider {
+    height: 70%;
+  }
+}
+
+@media (max-width: 300px) {
+  .slider-spacer {
+    height: 12%;
+  }
+
+  .prefs-slider {
+    height: 60%;
+  }
+}
+
+ /* Small devices (Between 576px and 767px) */
 @media (min-width: 576px) {
+  .tracks-display {
+    height: 17.5rem;
+  }
 
+  .track-element {
+    padding-top: .65rem;
+    padding-bottom: .55rem;
+    overflow-y: hidden;
+  }
+
+  .track-name {
+    font-size: .9rem;
+    margin-bottom: 0rem;
+  }
+
+  .artist-name {
+    font-size: .75rem;
+    overflow-y: hidden;
+  }
+
+  .slider-spacer {
+    height: 13.5%;
+  }
+
+  .prefs-slider {
+    height: 68%;
+  }
 }
 
- /* Medium devices (tablets, 768px and up) */
+ /* Medium devices (Between 768px and 991px) */
 @media (min-width: 768px) {
+  .tracks-display {
+    height: 20rem;
+  }
 
+  .track-element {
+    padding-top: .65rem;
+    padding-bottom: .55rem;
+    overflow-y: hidden;
+  }
+
+  .track-name {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .artist-name {
+    font-size: .85rem;
+    overflow-y: hidden;
+  }
 }
 
- /* Large devices (desktops, 992px and up) */
+ /* Large devices (Between 992px and 1199px) */
 @media (min-width: 992px) {
+  .tracks-display {
+    height: 22.5rem;
+  }
 
+  .track-element {
+    padding-top: .65rem;
+    padding-bottom: .55rem;
+    overflow-y: hidden;
+  }
+
+  .track-name {
+    font-size: 1.15rem;
+    margin-bottom: 0rem;
+  }
+
+  .artist-name {
+    font-size: .95rem;
+    overflow-y: hidden;
+  }
+
+  .slider-spacer {
+    height: 13.5%;
+  }
+
+  .prefs-slider {
+    height: 60%;
+  }
 }
 
- /* Extra large devices (large desktops, 1200px and up) */
+ /* Extra large devices (Greater than 1200px) */
 @media (min-width: 1200px) {
+  .tracks-display {
+    height: 22.5rem;
+  }
 
+  .track-element {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+  }
+
+  .track-name {
+    font-size: 1.25rem;
+    margin-bottom: 0rem;
+  }
+
+  .artist-name {
+    font-size: 1rem;
+    /* margin-top: 0rem; */
+    overflow-y: hidden;
+  }
+
+  .slider-spacer {
+    height: 15.5%;
+  }
+
+  .prefs-slider {
+    height: 64.5%;
+  }
 }
