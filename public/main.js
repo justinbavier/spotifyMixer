@@ -50,6 +50,13 @@ function showUser() {
   });
 }
 
+$(document).keypress(function(e) {
+  if ($("#genre-select").hasClass("show") && (e.keycode == 13 || e.which == 13)) {
+    document.getElementById('get-recommendations').click();
+  }
+});
+
+
 function getGenresList() {
   $("#genres-list").empty();
   $.get("/genres?token=" + _token, function(genres) {
@@ -281,7 +288,7 @@ function getRecommendations() {
   $("#genres-list input:checked").each(function() {
     genres.push($(this).val());
   });
-  if (genres[0]) {
+  if (genres[0] && genres.length <= 5) {
     let genresString = genres.join();
     localStorage.setItem("currentGenres", genresString);
     $("#current-genres").text(genresString);
@@ -318,6 +325,8 @@ function getRecommendations() {
         }
       }
     );
+  } else if (genres.length > 5) {
+      alert("You picked " + genres.length + " genres. " + genres.length + " is more than 5. Read the instructions and try again.");
   } else if (!genres[0]) {
     alert(
       `Spotify's recommendation API requires that you pick a genre to send requests!`

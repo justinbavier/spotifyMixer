@@ -384,7 +384,7 @@
               <div class="modal-content">
 
                 <div class="modal-header">
-                  <h4 class="modal-title">Select genres</h4>
+                  <h4 class="modal-title">Select up to five (5) genres...</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -392,7 +392,7 @@
 
                 <div class="modal-body">
                   <p class="text-center">
-                    Make sure you hit okay when you're all done!
+                    Make <strong>sure</strong> you hit okay when you're all done!
                   </p>
                   <div id="genres-list" data-toggle="buttons">
                   </div>
@@ -400,7 +400,7 @@
 
                 <div class="modal-footer">
                   <div class="col-3"></div>
-                  <button type="button" class="btn col-6" data-dismiss="modal" onclick="getRecommendations();">Okay!</button>
+                  <button type="button" id="get-recommendations" class="btn col-6" data-dismiss="modal" onclick="getRecommendations();">Okay!</button>
                   <div class="col-3"></div>
                 </div>
 
@@ -425,7 +425,7 @@
                     <p>You don't have to name your playlist, but it'd be a lot cooler if you did...</p>
                     <div class="form-group">
                       <label for="playlist-name"></label>
-                      <input type="text" class="form-control" id="playlist-name" placeholder="Playlist Name" onkeydown = "if (event.keyCode == 13) {
+                      <input type="text" class="form-control" id="playlist-name" placeholder="Playlist Name" onkeydown="if (event.keyCode == 13) {
                         document.getElementById('submit-button').click(); alert('Thanks! Head over to Spotify to check out your playlist...'); }" >
                     </div>
                   </div>
